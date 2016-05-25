@@ -121,7 +121,7 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
     }
 
     /**
-     * Check if an specific value is fine with the collection
+     * Check if an specific element is valid to the collection type
      *
      * @param mixed $element
      * @return bool
