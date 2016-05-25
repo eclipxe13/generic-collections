@@ -14,15 +14,8 @@ use GenericCollections\Utils\TypeChecker;
  *
  * @package GenericCollections\Abstracts
  */
-abstract class AbstractCollection implements CollectionInterface
+abstract class AbstractCollection extends InternalDataArray implements CollectionInterface
 {
-    /**
-     * Local storage for elements
-     *
-     * @var array
-     */
-    protected $data = [];
-
     public function addAll(array $elements)
     {
         $added = false;
@@ -45,27 +38,6 @@ abstract class AbstractCollection implements CollectionInterface
         $this->data[] = $element;
 
         return true;
-    }
-
-    public function count()
-    {
-        return count($this->data);
-    }
-
-    public function isEmpty()
-    {
-        return (0 === count($this->data));
-    }
-
-
-    public function toArray()
-    {
-        return $this->data;
-    }
-
-    public function clear()
-    {
-        $this->data = [];
     }
 
     public function contains($element)
@@ -146,11 +118,6 @@ abstract class AbstractCollection implements CollectionInterface
             $this->data = array_values($this->data);
         }
         return $changed;
-    }
-
-    public function getIterator()
-    {
-        return new \ArrayIterator($this->data);
     }
 
     /**

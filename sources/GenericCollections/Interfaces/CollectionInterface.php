@@ -6,7 +6,7 @@
  * @link https://docs.oracle.com/javase/7/docs/api/java/util/Collection.html
  * @package GenericCollections\Interfaces
  */
-interface CollectionInterface extends \Countable, \IteratorAggregate
+interface CollectionInterface extends InternalDataArray
 {
     /**
      * Get the type of the elements on the collection
@@ -53,14 +53,6 @@ interface CollectionInterface extends \Countable, \IteratorAggregate
      * @return bool
      */
     public function addAll(array $elements);
-
-    /**
-     * Removes all of the elements from this collection (optional operation).
-     * The collection will be empty after this method returns.
-     *
-     * @return void
-     */
-    public function clear();
 
     /**
      * Returns true if this collection contains the specified element.
@@ -128,18 +120,4 @@ interface CollectionInterface extends \Countable, \IteratorAggregate
      * @return bool
      */
     public function retainAll(array $elements);
-
-    /**
-     * Returns true if this collection contains no elements.
-     *
-     * @return bool
-     */
-    public function isEmpty();
-
-    /**
-     * Get the collection elements as an array
-     *
-     * @return array
-     */
-    public function toArray();
 }
