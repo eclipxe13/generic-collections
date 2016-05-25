@@ -25,7 +25,7 @@ class TypeChecker
     /**
      * Check if a value match with an specific type
      *
-     * @param mixed $type
+     * @param string $type
      * @param mixed $value
      * @return bool
      */
