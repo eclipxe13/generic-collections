@@ -71,5 +71,4 @@ class CollectionEqualTest extends \PHPUnit_Framework_TestCase
         // the collection must have other 2 items
         $this->assertCount(2, $col);
     }
-
 }

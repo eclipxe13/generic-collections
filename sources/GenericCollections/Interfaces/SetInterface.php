@@ -32,5 +32,4 @@ interface SetInterface extends CollectionInterface
      * @return bool
      */
     public function addAll(array $elements);
-
 }
