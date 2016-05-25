@@ -1,0 +1,32 @@
+{
+    "name": "eclipxe/generic-collections",
+    "description": "Library to mimics generic collections",
+    "homepage": "https://github.com/eclipxe13/generic-collections",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carlos C Soto",
+            "email": "eclipxe13@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "@stable",
+        "squizlabs/php_codesniffer": "@stable",
+        "jakub-onderka/php-parallel-lint": "@stable",
+        "satooshi/php-coveralls": "@stable",
+        "fabpot/php-cs-fixer": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "GenericCollections\\": "sources/GenericCollections/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GenericCollections\\Tests\\": "tests/GenericCollections/"
+        }
+    }
+}
