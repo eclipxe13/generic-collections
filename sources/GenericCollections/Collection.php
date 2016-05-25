@@ -12,7 +12,7 @@ use GenericCollections\Traits\CollectionTrait;
  *
  * @package GenericCollections
  */
-final class Collection extends AbstractCollection
+class Collection extends AbstractCollection
 {
     use CollectionTrait;
 }
