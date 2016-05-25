@@ -31,5 +31,18 @@ class SetStrictTest extends \PHPUnit_Framework_TestCase
 
         // contents are correct
         $this->assertEquals([$foo], $set->toArray());
+
+        // insert a non identical but equal object
+        $bar = new Samples\Foo(100);
+        $this->assertTrue($set->add($bar));
+    }
+
+    public function testAddWithEqual()
+    {
+        $set = new Set(Samples\Foo::class, [], false);
+
+        // are not identical but equal
+        $this->assertTrue($set->add(new Samples\Foo(100)));
+        $this->assertFalse($set->add(new Samples\Foo(100)));
     }
 }
