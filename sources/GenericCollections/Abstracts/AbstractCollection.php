@@ -121,14 +121,6 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
     }
 
     /**
-     * Private property to use inside checkValueType to not
-     * create the TypeChecker object every time a check is made
-     *
-     * @var TypeChecker
-     */
-    private $typeCheckerObject;
-
-    /**
      * Check if an specific value is fine with the collection
      *
      * @param mixed $element
@@ -136,9 +128,6 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
      */
     public function checkElementType($element)
     {
-        if (! ($this->typeCheckerObject instanceof TypeChecker)) {
-            $this->typeCheckerObject = new TypeChecker();
-        }
-        return $this->typeCheckerObject->checkType($this->getElementType(), $element);
+        return TypeChecker::getInstance()->checkType($this->getElementType(), $element);
     }
 }
