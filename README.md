@@ -40,7 +40,7 @@ class Foos extends AbstractCollectionStrict
 Basic classes:
 
 - [x] Collection: A collection represents a group of elements of the same type.
-- [ ] Set: A collection that does not allow repeated elements
+- [x] Set: A collection that does not allow repeated elements
 - [ ] SortedSet: A Set that is always sorted
 
 Classes that implement `\ArrayAccess`
