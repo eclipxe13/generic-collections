@@ -1,10 +1,12 @@
 <?php namespace GenericCollections;
 
-use GenericCollections\Abstracts\AbstractCollection;
+use GenericCollections\Abstracts\AbstractSet;
 use GenericCollections\Traits\CollectionTrait;
 
 /**
- * Generic collection implementation
+ * Generic set implementation
+ *
+ * A set is the same as a collection but can't contain duplicated values
  *
  * The elements comparison can be defined ad identical or equal,
  * if identical searchs match with '==='
@@ -12,7 +14,8 @@ use GenericCollections\Traits\CollectionTrait;
  *
  * @package GenericCollections
  */
-final class Collection extends AbstractCollection
+
+class Set extends AbstractSet
 {
     use CollectionTrait;
 }
