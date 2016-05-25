@@ -1,7 +1,7 @@
 <?php namespace GenericCollections;
 
 use GenericCollections\Abstracts\AbstractCollection;
-use GenericCollections\Traits\CollectionTrait;
+use GenericCollections\Utils\TypeProperty;
 
 /**
  * Generic collection implementation
@@ -14,5 +14,42 @@ use GenericCollections\Traits\CollectionTrait;
  */
 class Collection extends AbstractCollection
 {
-    use CollectionTrait;
+    /**
+     * @var TypeProperty
+     */
+    private $elementType;
+
+    /**
+     * Comparison types
+     * @var bool
+     */
+    private $comparisonIdentical;
+
+    /**
+     * Generic collection
+     *
+     * example: `new Collection(Foo::class, [new Foo(), new Foo()]`
+     *
+     * @param string $elementType
+     * @param array $elements
+     * @param bool $comparisonIdentical
+     */
+    public function __construct($elementType, array $elements = [], $comparisonIdentical = true)
+    {
+        $this->elementType = new TypeProperty($elementType);
+        $this->comparisonIdentical = (bool) $comparisonIdentical;
+        $this->addAll($elements);
+    }
+
+    // implements CollectionInterface::getElementType : string
+    public function getElementType()
+    {
+        return (string) $this->elementType;
+    }
+
+    // implements CollectionInterface::getElementType : bool
+    public function isComparisonIdentical()
+    {
+        return $this->comparisonIdentical;
+    }
 }
