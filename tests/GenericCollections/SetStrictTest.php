@@ -1,5 +1,7 @@
 <?php namespace GenericCollections\Tests;
 
+use GenericCollections\Collection;
+use GenericCollections\Interfaces\CollectionInterface;
 use GenericCollections\Set;
 
 /*
@@ -8,6 +10,14 @@ use GenericCollections\Set;
  */
 class SetStrictTest extends \PHPUnit_Framework_TestCase
 {
+
+    public function testInheritance()
+    {
+        $set = new Set('int');
+        $this->assertInstanceOf(CollectionInterface::class, $set);
+        $this->assertInstanceOf(Collection::class, $set);
+    }
+
     public function testAdd()
     {
         $foo = new Samples\Foo(100);
@@ -15,10 +25,10 @@ class SetStrictTest extends \PHPUnit_Framework_TestCase
 
         // first insert is fine
         $this->assertTrue($set->add($foo));
-        
+
         // second insert returns false
         $this->assertFalse($set->add($foo));
-        
+
         // contents are correct
         $this->assertEquals([$foo], $set->toArray());
     }
