@@ -22,6 +22,13 @@ class TypeChecker
         'callable' => 'checkCallable',
     ];
 
+    /**
+     * Check if a value match with an specific type
+     *
+     * @param mixed $type
+     * @param mixed $value
+     * @return bool
+     */
     public function checkType($type, $value)
     {
         if (! array_key_exists($type, $this->map)) {
@@ -96,7 +103,6 @@ class TypeChecker
 
     protected function checkCallable($value)
     {
-        is_long($value);
         return is_callable($value);
     }
 }
