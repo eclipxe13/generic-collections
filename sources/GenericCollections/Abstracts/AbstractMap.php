@@ -3,7 +3,7 @@
 use GenericCollections\Interfaces\MapInterface;
 use GenericCollections\Utils\TypeChecker;
 
-abstract class AbstractMap extends InternalDataArray implements MapInterface
+abstract class AbstractMap extends InternalDataArray implements MapInterface, \ArrayAccess
 {
     public function checkValueType($value)
     {
@@ -135,5 +135,32 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface
             return true;
         }
         return false;
+    }
+
+    /*
+     * Implementations from \ArrayAccess
+     */
+    /** @inheritdoc */
+    public function offsetExists($offset)
+    {
+        return $this->containsKey($offset);
+    }
+
+    /** @inheritdoc */
+    public function offsetGet($offset)
+    {
+        return $this->get($offset);
+    }
+
+    /** @inheritdoc */
+    public function offsetSet($offset, $value)
+    {
+        $this->put($offset, $value);
+    }
+
+    /** @inheritdoc */
+    public function offsetUnset($offset)
+    {
+        $this->remove($offset);
     }
 }
