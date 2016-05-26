@@ -46,7 +46,7 @@ Basic classes:
 Classes that implement `\ArrayAccess`
 
 - [ ] List: A collection that can be accesed by their integer index and search elements on the list.
-- [ ] Map: A mapping from keys to values. Each key can map to one value.
+- [ ] Map: A mapping from keys to values.
 
 ## About
 
@@ -84,8 +84,9 @@ Please see [LICENSE][] for more information.
 
 ## TODO
 
+- [ ] Implement \ArrayAccess interface on Map
 - [ ] Create the wiki structure
-- [ ] Document `Collection` on wiki
+- [ ] Document classes and examples
 
 [java]: http://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html
 [ramsey]: https://github.com/ramsey/collection
