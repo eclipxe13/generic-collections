@@ -103,17 +103,12 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
     {
         $changed = false;
         $previous = $this->get($key);
-        if ($this->isComparisonIdentical()) {
-            if ($previous === $value) {
-                unset($this->data[$key]);
-                $changed = true;
-            }
-        }
-        if (! $this->isComparisonIdentical()) {
-            if ($previous == $value) {
-                unset($this->data[$key]);
-                $changed = true;
-            }
+        $isequal = ($this->isComparisonIdentical())
+            ? ($previous === $value)
+            : ($previous == $value);
+        if ($isequal) {
+            unset($this->data[$key]);
+            $changed = true;
         }
         return $changed;
     }

@@ -95,11 +95,6 @@ interface MapInterface extends InternalDataArray
      */
     public function keys();
 
-    // If the specified key is not already
-    // associated with a value or is associated with null,
-    // associates it with the given non-null value.
-    // merge(k, v)
-
     /**
      * Associates the specified value with the specified key in this map (optional operation).
      * Returns the previous value associated with key
@@ -152,7 +147,7 @@ interface MapInterface extends InternalDataArray
     public function removeExact($key, $value);
 
     /**
-     * Put an association to the key to the supplyed value
+     * Put an association to the key to a new value
      * only if the map contains the key
      *
      * Returns null if the map does not have the key,
@@ -165,9 +160,10 @@ interface MapInterface extends InternalDataArray
     public function replace($key, $value);
 
     /**
+     * Put an association to the key to a new value
+     * only if the map contains the key and is the same value
      *
-     * Returns null if the map does not have the key and current value,
-     * otherwise returns the previous value associated with key
+     * Returns true if the replace was made
      *
      * @param mixed $key
      * @param mixed $current
@@ -175,7 +171,7 @@ interface MapInterface extends InternalDataArray
      * @return bool
      */
     public function replaceExact($key, $current, $replacement);
-    
+
     /**
      * Returns a generic set with the keys
      *
