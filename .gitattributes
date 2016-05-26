@@ -1,6 +1,11 @@
-# .gitattributes
-tests/ export-ignore
-spec/ export-ignore
-
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Do not put this files on production
+/.idea/              export-ignore
+/.gitignore          export-ignore
+/.gitattributes      export-ignore
+/docs/               export-ignore
+/vendor/             export-ignore
+/tests/              export-ignore
+/phpunit.xml.dist    export-ignore
