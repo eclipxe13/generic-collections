@@ -17,7 +17,7 @@ class CollectionStrictTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('int', $col->getElementType());
         $this->assertInternalType('array', $col->toArray());
         $this->assertEquals([], $col->toArray());
-        $this->assertSame(true, $col->isComparisonIdentical());
+        $this->assertSame(true, $col->comparisonMethodIsIdentical());
     }
 
     public function testAdd()

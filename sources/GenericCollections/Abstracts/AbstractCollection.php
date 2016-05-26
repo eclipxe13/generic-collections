@@ -42,7 +42,7 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
 
     public function contains($element)
     {
-        return in_array($element, $this->data, $this->isComparisonIdentical());
+        return in_array($element, $this->data, $this->comparisonMethodIsIdentical());
     }
 
     public function containsAll(array $elements)
@@ -67,7 +67,7 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
 
     public function remove($element)
     {
-        $index = array_search($element, $this->data, $this->isComparisonIdentical());
+        $index = array_search($element, $this->data, $this->comparisonMethodIsIdentical());
         if (false === $index) {
             return false;
         }
@@ -109,7 +109,7 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
     {
         $changed = false;
         foreach ($this->data as $index => $element) {
-            if (! in_array($element, $elements, $this->isComparisonIdentical())) {
+            if (! in_array($element, $elements, $this->comparisonMethodIsIdentical())) {
                 unset($this->data[$index]);
                 $changed = true;
             }

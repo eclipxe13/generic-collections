@@ -48,7 +48,7 @@ class Collection extends AbstractCollection
     }
 
     // implements CollectionInterface::getElementType : bool
-    public function isComparisonIdentical()
+    public function comparisonMethodIsIdentical()
     {
         return $this->comparisonIdentical;
     }

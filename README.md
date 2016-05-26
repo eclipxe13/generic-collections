@@ -112,7 +112,7 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [license]: https://github.com/eclipxe13/generic-collections/blob/master/LICENSE
 [build]: https://travis-ci.org/eclipxe13/generic-collections
 [quality]: https://scrutinizer-ci.com/g/eclipxe13/generic-collections/
-[coverage]: https://coveralls.io/r/eclipxe13/generic-collections?branch=master
+[coverage]: https://
 [downloads]: https://packagist.org/packages/eclipxe13/generic-collections
 
 [badge-source]: http://img.shields.io/badge/source-eclipxe13/generic--collections-blue.svg?style=flat-square
@@ -120,5 +120,8 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [badge-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [badge-build]: https://img.shields.io/travis/eclipxe13/generic-collections.svg?style=flat-square
 [badge-quality]: https://img.shields.io/scrutinizer/g/eclipxe13/generic-collections/master.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/coveralls/eclipxe13/generic-collections/master.svg?style=flat-square
+[badge-coverage]: https://scrutinizer-ci.com/g/eclipxe13/generic-collections/?branch=master
 [badge-downloads]: https://img.shields.io/packagist/dt/eclipxe13/generic-collections.svg?style=flat-square
+
+
+[![Code Coverage]()]()

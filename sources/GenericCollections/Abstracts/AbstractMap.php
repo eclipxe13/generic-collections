@@ -24,7 +24,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
 
     public function containsValue($value)
     {
-        return in_array($value, $this->data, $this->isComparisonIdentical());
+        return in_array($value, $this->data, $this->comparisonMethodIsIdentical());
     }
 
     public function get($key)
@@ -103,7 +103,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
     {
         $changed = false;
         $previous = $this->get($key);
-        $isequal = ($this->isComparisonIdentical())
+        $isequal = ($this->comparisonMethodIsIdentical())
             ? ($previous === $value)
             : ($previous == $value);
         if ($isequal) {
@@ -124,7 +124,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
             return false;
         }
         $previous = $this->get($key);
-        $isequal = ($this->isComparisonIdentical())
+        $isequal = ($this->comparisonMethodIsIdentical())
             ? ($previous === $current)
             : ($previous == $current);
         if ($isequal) {
