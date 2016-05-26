@@ -95,11 +95,6 @@ interface MapInterface extends InternalDataArray
      */
     public function keys();
 
-    // If the specified key is not already
-    // associated with a value or is associated with null,
-    // associates it with the given non-null value.
-    // merge(k, v)
-
     /**
      * Associates the specified value with the specified key in this map (optional operation).
      * Returns the previous value associated with key
