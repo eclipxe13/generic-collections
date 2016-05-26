@@ -57,6 +57,14 @@ changes to his API I decide to create my own approach.
 
 I had also take a deep search on [Packagist][] but couldn't find a library that ensure type checking.
 
+## Compatibility
+
+This class will be compatible according to [PHP Supported versions](http://php.net/supported-versions.php),
+Security Support. This means that it will offer compatibility with PHP 5.6+ until 2018-12-31.
+
+The support for cersion 5.5+ is not included since this PHP version will end 2016-06-10
+and that is lower than the release of first version of this library.
+
 ## Documentation
 
 WIP. Be patient please.
