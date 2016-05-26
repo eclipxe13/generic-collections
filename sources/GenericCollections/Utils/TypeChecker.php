@@ -59,9 +59,6 @@ class TypeChecker
             return $this->checkInstanceOf($value, $type);
         }
         $call = [$this, $this->map[$type]];
-        if (! is_callable($call)) {
-            return false;
-        }
         return call_user_func($call, $value);
     }
 
