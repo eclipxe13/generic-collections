@@ -1,11 +1,12 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
+use GenericCollections\Tests\Samples\Foo;
 
 /*
  * This check all methods, assuming that the comparisons
  * inside the collection are identical.
- * 
+ *
  * The behavior on non identical is on CollectionEqualTest
  */
 class CollectionStrictTest extends \PHPUnit_Framework_TestCase
@@ -71,6 +72,31 @@ class CollectionStrictTest extends \PHPUnit_Framework_TestCase
 
         $this->assertCount(0, $col);
         $this->assertEquals([], $col->toArray());
+    }
+
+    public function testGetIterator()
+    {
+        $iterated = [];
+        $first = new Foo(1); // equal to $one, but not the same;
+        $one = new Foo(1);
+        $two = new Foo(0);
+        $expected = [
+            $first,
+            $one,
+            $two
+        ];
+        $col = new Collection(Foo::class, $expected);
+
+        $this->assertInstanceOf(\IteratorAggregate::class, $col);
+        $iterator = $col->getIterator();
+
+        foreach ($iterator as $element) {
+            $this->assertInstanceOf(Foo::class, $element);
+            $iterated[] = $element;
+        }
+        $this->assertCount(3, $iterated);
+        $this->assertSame($expected, $iterated);
+        $this->assertSame($expected, $col->toArray());
     }
 
     public function testIsEmpty()
