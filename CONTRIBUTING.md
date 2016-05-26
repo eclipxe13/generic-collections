@@ -2,11 +2,13 @@
 
 Contributions are welcome. We accept pull requests on [GitHub](https://github.com/eclipxe13/generic-collections).
 
-This project adheres to a [Contributor Code of Conduct](https://github.com/ramsey/collection/blob/master/CODE_OF_CONDUCT.md). By participating in this project and its community, you are expected to uphold this code.
+This project adheres to a [Contributor Code of Conduct](https://github.com/eclipxe13/generic-collections/blob/master/CODE_OF_CONDUCT.md).
+By participating in this project and its community, you are expected to uphold this code.
 
 ## Team members
 
 * [Carlos C Soto](https://github.com/eclipxe13) - original author and maintainer
+* [GitHub constributors](https://github.com/eclipxe13/generic-collections/graphs/contributors)
 
 ## Communication Channels
 
