@@ -1,5 +1,8 @@
 <?php namespace GenericCollections\Interfaces;
 
+use GenericCollections\Collection;
+use GenericCollections\Set;
+
 interface MapInterface extends InternalDataArray
 {
     /**
@@ -172,4 +175,18 @@ interface MapInterface extends InternalDataArray
      * @return bool
      */
     public function replaceExact($key, $current, $replacement);
+    
+    /**
+     * Returns a generic set with the keys
+     *
+     * @return Set
+     */
+    public function keysSet();
+
+    /**
+     * Returns a generic set with the keys
+     *
+     * @return Collection
+     */
+    public function valuesCollection();
 }

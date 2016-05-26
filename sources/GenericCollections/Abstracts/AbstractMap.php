@@ -1,6 +1,8 @@
 <?php namespace GenericCollections\Abstracts;
 
+use GenericCollections\Collection;
 use GenericCollections\Interfaces\MapInterface;
+use GenericCollections\Set;
 use GenericCollections\Utils\TypeChecker;
 
 abstract class AbstractMap extends InternalDataArray implements MapInterface, \ArrayAccess
@@ -136,6 +138,18 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
         }
         return false;
     }
+
+    public function keysSet()
+    {
+        return new Set($this->getKeyType(), $this->keys());
+    }
+
+    public function valuesCollection()
+    {
+        return new Collection($this->getValueType(), $this->toArray());
+    }
+
+
 
     /*
      * Implementations from \ArrayAccess

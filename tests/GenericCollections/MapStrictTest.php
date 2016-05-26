@@ -1,8 +1,10 @@
 <?php namespace GenericCollections\Tests;
 
+use GenericCollections\Collection;
 use GenericCollections\Interfaces\InternalDataArray;
 use GenericCollections\Interfaces\MapInterface;
 use GenericCollections\Map;
+use GenericCollections\Set;
 use GenericCollections\Tests\Samples\Foo;
 
 class MapStrictTest extends \PHPUnit_Framework_TestCase
@@ -274,5 +276,26 @@ class MapStrictTest extends \PHPUnit_Framework_TestCase
         $nine = new Foo(9);
         $this->assertTrue($map->replaceExact('zero', $this->zero, $nine));
         $this->assertSame($nine, $map->get('zero'));
+    }
+
+    public function testKeysSet()
+    {
+        $map = $this->createMapStringFoo();
+        $expected = new Set('string', ['zero', 'four', 'five']);
+
+        $this->assertEquals($expected, $map->keysSet());
+    }
+
+    public function testValuesCollection()
+    {
+        $map = $this->createMapStringFoo();
+        $expected = new Collection(Foo::class, [
+            $this->zero,
+            $this->four,
+            $this->five,
+        ]);
+
+        $this->assertEquals($expected, $map->valuesCollection());
+        $this->assertSame($expected->toArray(), $map->valuesCollection()->toArray());
     }
 }
