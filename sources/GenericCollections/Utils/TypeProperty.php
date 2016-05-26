@@ -21,12 +21,33 @@ class TypeProperty
     public function __construct($type)
     {
         if (empty($type)) {
-            throw new \InvalidArgumentException('The type for ' . self::class . ' is empty');
+            throw new \InvalidArgumentException('The type for ' . get_class($this) . ' is empty');
         }
         if (!is_string($type)) {
-            throw new \InvalidArgumentException('The type for ' . self::class . ' is not a string');
+            throw new \InvalidArgumentException('The type for ' . get_class($this) . ' is not a string');
+        }
+        $allowed = $this->getAllowedTypes();
+        if (is_array($allowed) and count($allowed) and ! in_array($type, $allowed, true)) {
+            throw new \InvalidArgumentException(
+                'The type ' . $type . ' for ' . get_class($this) . ' is not a allowed'
+            );
         }
         $this->type = $type;
+    }
+
+    /**
+     * Return the allowed types for this property.
+     * Its used for the validations inside the constructor.
+     *
+     * To restict to a certain types return the array with the list of types
+     *
+     * If a non array is returned then any type is allowed
+     *
+     * @return array|null
+     */
+    public function getAllowedTypes()
+    {
+        return null;
     }
 
     /**
@@ -38,7 +59,7 @@ class TypeProperty
     {
         return $this->type;
     }
-    
+
     public function __toString()
     {
         return $this->getType();
