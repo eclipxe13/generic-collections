@@ -284,6 +284,7 @@ class MapStrictTest extends \PHPUnit_Framework_TestCase
         $expected = new Set('string', ['zero', 'four', 'five']);
 
         $this->assertEquals($expected, $map->keysSet());
+        $this->assertSame($expected->toArray(), $map->keysSet()->toArray());
     }
 
     public function testValuesCollection()
