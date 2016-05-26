@@ -3,7 +3,11 @@
 use GenericCollections\Interfaces\InternalDataArray as InternalDataArrayInterface;
 
 /**
- * Implementation
+ * This is a internal class to implement a protected property $data
+ * that works like the internal storage for classes on this package.
+ *
+ * It also contains small methods to work with the array as a variable,
+ * not in its contains. This follow the InternalDataArrayInterface
  *
  * @package GenericCollections\Abstracts
  */
