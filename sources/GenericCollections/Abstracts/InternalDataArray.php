@@ -6,7 +6,6 @@ use GenericCollections\Interfaces\InternalDataArray as InternalDataArrayInterfac
  * Implementation
  *
  * @package GenericCollections\Abstracts
- * @access protected
  */
 abstract class InternalDataArray implements InternalDataArrayInterface
 {
