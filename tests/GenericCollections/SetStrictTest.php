@@ -37,6 +37,15 @@ class SetStrictTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($set->add($bar));
     }
 
+    public function testAddCannotAddItself()
+    {
+        $set = new Set('mixed');
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('It is not allowed for a set to contain itself as an element');
+        $set->add($set);
+    }
+
     public function testAddWithEqual()
     {
         $set = new Set(Samples\Foo::class, [], false);
