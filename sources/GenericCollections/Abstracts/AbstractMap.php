@@ -19,7 +19,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
 
     public function containsKey($key)
     {
-        return $this->checkKeyType($key) and array_key_exists($key, $this->data);
+        return $this->checkKeyType($key) && array_key_exists($key, $this->data);
     }
 
     public function containsValue($value)
@@ -37,7 +37,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
         if ($this->containsKey($key)) {
             return $this->data[$key];
         }
-        if (null !== $default and ! $this->checkValueType($default)) {
+        if (null !== $default && ! $this->checkValueType($default)) {
             throw new \InvalidArgumentException(
                 'The default value provided for '
                 . get_class($this) . '::getOrDefault is not a valid type,'

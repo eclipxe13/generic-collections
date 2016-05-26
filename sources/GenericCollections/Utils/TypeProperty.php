@@ -27,7 +27,7 @@ class TypeProperty
             throw new \InvalidArgumentException('The type for ' . get_class($this) . ' is not a string');
         }
         $allowed = $this->getAllowedTypes();
-        if (is_array($allowed) and count($allowed) and ! in_array($type, $allowed, true)) {
+        if (is_array($allowed) && count($allowed) && ! in_array($type, $allowed, true)) {
             throw new \InvalidArgumentException(
                 'The type ' . $type . ' for ' . get_class($this) . ' is not a allowed'
             );
