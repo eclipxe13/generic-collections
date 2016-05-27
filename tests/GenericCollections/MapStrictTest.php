@@ -47,7 +47,7 @@ class MapStrictTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([], $map->toArray());
         $this->assertCount(0, $map);
 
-        $this->assertSame(true, $map->isComparisonIdentical());
+        $this->assertSame(true, $map->comparisonMethodIsIdentical());
     }
 
     public function testConstructWithBadKeyType()

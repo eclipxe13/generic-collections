@@ -7,9 +7,9 @@ use GenericCollections\Tests\Samples\Foo;
  *
  * The map is fully tested, what we have to check here is
  * the methods that depends on this behavior, wich are:
- * - containsValue: in_array, isComparisonIdentical
- * - removeExact: isComparisonIdentical
- * - replaceExact: isComparisonIdentical
+ * - containsValue: in_array, comparisonMethodIsIdentical
+ * - removeExact: comparisonMethodIsIdentical
+ * - replaceExact: comparisonMethodIsIdentical
  *
  */
 class MapEqualTest extends \PHPUnit_Framework_TestCase
@@ -23,7 +23,7 @@ class MapEqualTest extends \PHPUnit_Framework_TestCase
     {
         $map = $this->newFooMapWithEqualComparisons();
 
-        $this->assertFalse($map->isComparisonIdentical(), 'The map non-identical says the opposite');
+        $this->assertFalse($map->comparisonMethodIsIdentical(), 'The map non-identical says the opposite');
     }
 
     public function testContainsValue()

@@ -58,8 +58,8 @@ class Map extends AbstractMap
         return (string) $this->valueType;
     }
 
-    // implements MapInterface::isComparisonIdentical : bool
-    public function isComparisonIdentical()
+    // implements MapInterface::comparisonMethodIsIdentical : bool
+    public function comparisonMethodIsIdentical()
     {
         return $this->comparisonIdentical;
     }

@@ -36,20 +36,6 @@ interface MapInterface extends InternalDataArray
     public function checkKeyType($key);
 
     /**
-     * Returns how the values in the map must be compared
-     * identical (as of ===) otherwise equal (as of ===)
-     *
-     * The keys are always compared identically
-     *
-     * This affect the collection behavior and is required since how PHP compare objects.
-     * It won't be necessary if PHP objects have a magic method __equals or similar
-     *
-     * @return bool
-     */
-    public function isComparisonIdentical();
-
-
-    /**
      * Returns true if this map contains a mapping for the specified key.
      * The comparison on keys are always strict/identical
      *

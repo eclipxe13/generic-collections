@@ -19,7 +19,7 @@ class CollectionEqualTest extends \PHPUnit_Framework_TestCase
     {
         $col = $this->newFooCollection();
 
-        $this->assertSame(false, $col->isComparisonIdentical());
+        $this->assertSame(false, $col->comparisonMethodIsIdentical());
     }
 
     public function testContains()

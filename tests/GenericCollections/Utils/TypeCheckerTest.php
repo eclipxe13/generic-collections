@@ -142,4 +142,10 @@ class TypeCheckerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->checker->checkType('callable', $arraycall));
         $this->assertFalse($this->checker->checkType('callable', new \stdClass()));
     }
+
+    public function testwithAllowNull()
+    {
+        $this->assertFalse($this->checker->checkType('object', null));
+        $this->assertTrue($this->checker->checkType('object', null, true));
+    }
 }

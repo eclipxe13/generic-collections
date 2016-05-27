@@ -47,17 +47,18 @@ class TypeChecker
      *
      * @param string $type
      * @param mixed $value
+     * @param bool $allowNull
      * @return bool
      */
-    public function checkType($type, $value)
+    public function checkType($type, $value, $allowNull = false)
     {
+        if (null === $value && $allowNull) {
+            return true;
+        }
         if (! array_key_exists($type, $this->map)) {
             return $this->checkInstanceOf($value, $type);
         }
         $call = [$this, $this->map[$type]];
-        if (! is_callable($call)) {
-            return false;
-        }
         return call_user_func($call, $value);
     }
 

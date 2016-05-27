@@ -19,12 +19,12 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
 
     public function containsKey($key)
     {
-        return $this->checkKeyType($key) and array_key_exists($key, $this->data);
+        return $this->checkKeyType($key) && array_key_exists($key, $this->data);
     }
 
     public function containsValue($value)
     {
-        return in_array($value, $this->data, $this->isComparisonIdentical());
+        return in_array($value, $this->data, $this->comparisonMethodIsIdentical());
     }
 
     public function get($key)
@@ -37,7 +37,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
         if ($this->containsKey($key)) {
             return $this->data[$key];
         }
-        if (null !== $default and ! $this->checkValueType($default)) {
+        if (null !== $default && ! $this->checkValueType($default)) {
             throw new \InvalidArgumentException(
                 'The default value provided for '
                 . get_class($this) . '::getOrDefault is not a valid type,'
@@ -103,7 +103,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
     {
         $changed = false;
         $previous = $this->get($key);
-        $isequal = ($this->isComparisonIdentical())
+        $isequal = ($this->comparisonMethodIsIdentical())
             ? ($previous === $value)
             : ($previous == $value);
         if ($isequal) {
@@ -124,7 +124,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
             return false;
         }
         $previous = $this->get($key);
-        $isequal = ($this->isComparisonIdentical())
+        $isequal = ($this->comparisonMethodIsIdentical())
             ? ($previous === $current)
             : ($previous == $current);
         if ($isequal) {
