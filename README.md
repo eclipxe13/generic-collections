@@ -36,7 +36,7 @@ class Foos extends Collection
 Or extend the Abstract class, by example:
 
 ```php
-class Foos extends AbstractCollectionStrict
+class Foos extends AbstractCollection
 {
     public function getElementType()
     {
