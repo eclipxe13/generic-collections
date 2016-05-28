@@ -1,6 +1,8 @@
 <?php namespace GenericCollections;
 
 use GenericCollections\Abstracts\AbstractCollection;
+use GenericCollections\Traits\ElementTypeProperty;
+use GenericCollections\Traits\OptionsProperty;
 use GenericCollections\Utils\TypeProperty;
 
 /**
@@ -14,42 +16,27 @@ use GenericCollections\Utils\TypeProperty;
  */
 class Collection extends AbstractCollection
 {
-    /**
-     * @var TypeProperty
-     */
-    private $elementType;
-
-    /**
-     * Comparison types
-     * @var bool
-     */
-    private $comparisonIdentical;
+    use ElementTypeProperty;
+    use OptionsProperty;
 
     /**
      * Generic collection
      *
      * example: `new Collection(Foo::class, [new Foo(), new Foo()]`
      *
+     * Options:
+     * - Defaults: not allow nulls, identical comparisons
+     * - It is not possible to allow duplicates, use a Collection instead
+     * - If allow null elements is enabled only 1 value can be null
+     *
      * @param string $elementType
      * @param array $elements
-     * @param bool $comparisonIdentical
+     * @param int $options
      */
-    public function __construct($elementType, array $elements = [], $comparisonIdentical = true)
+    public function __construct($elementType, array $elements = [], $options = 0)
     {
-        $this->elementType = new TypeProperty($elementType);
-        $this->comparisonIdentical = (bool) $comparisonIdentical;
+        $this->options = new Options($options);
+        $this->elementType = new TypeProperty($elementType, $this->options->optionAllowNullMembers());
         $this->addAll($elements);
-    }
-
-    // implements CollectionInterface::getElementType : string
-    public function getElementType()
-    {
-        return (string) $this->elementType;
-    }
-
-    // implements CollectionInterface::getElementType : bool
-    public function comparisonMethodIsIdentical()
-    {
-        return $this->comparisonIdentical;
     }
 }

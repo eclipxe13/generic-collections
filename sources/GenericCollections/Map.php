@@ -1,26 +1,20 @@
 <?php namespace GenericCollections;
 
 use GenericCollections\Abstracts\AbstractMap;
+use GenericCollections\Traits\ElementTypeProperty;
+use GenericCollections\Traits\KeyTypeProperty;
+use GenericCollections\Traits\OptionsProperty;
 use GenericCollections\Utils\TypeProperty;
 use GenericCollections\Utils\TypeKeyProperty;
 
 class Map extends AbstractMap
 {
-    /**
-     * @var TypeProperty
-     */
-    private $valueType;
-
-    /**
-     * @var TypeKeyProperty
-     */
-    private $keyType;
-
-    /**
-     * Comparison types
-     * @var bool
-     */
-    private $comparisonIdentical;
+    use OptionsProperty;
+    use KeyTypeProperty;
+    use ElementTypeProperty {
+        getElementType as getValueType;
+        checkElementType as checkValueType;
+    }
 
     /**
      * Generic map
@@ -33,34 +27,21 @@ class Map extends AbstractMap
      * ];
      * ```
      *
+     * Options:
+     * - Defaults: not allow nulls, allow duplicates, identical comparisons
+     * - deny duplicates can be activated
+     * - If allow null elements and deny duplicates, any entry on the map can have a null value
+     *
      * @param string $keyType
      * @param string $valueType
      * @param array $values
-     * @param bool $comparisonIdentical
+     * @param int $options check constants inside Options class
      */
-    public function __construct($keyType, $valueType, array $values = [], $comparisonIdentical = true)
+    public function __construct($keyType, $valueType, array $values = [], $options = 0)
     {
-        $this->keyType = new TypeKeyProperty($keyType);
-        $this->valueType = new TypeProperty($valueType);
-        $this->comparisonIdentical = (bool) $comparisonIdentical;
+        $this->options = new Options($options);
+        $this->keyType = new TypeKeyProperty($keyType, false);
+        $this->elementType = new TypeProperty($valueType, $this->optionAllowNullMembers());
         $this->putAll($values);
-    }
-
-    // implements MapInterface::getKeyType : bool
-    public function getKeyType()
-    {
-        return (string) $this->keyType;
-    }
-
-    // implements MapInterface::getValueType : bool
-    public function getValueType()
-    {
-        return (string) $this->valueType;
-    }
-
-    // implements MapInterface::comparisonMethodIsIdentical : bool
-    public function comparisonMethodIsIdentical()
-    {
-        return $this->comparisonIdentical;
     }
 }

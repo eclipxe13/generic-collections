@@ -16,23 +16,54 @@ class TypeProperty
     private $type;
 
     /**
-     * @param string $type
+     * Type checker for this property
+     *
+     * @var TypeChecker
      */
-    public function __construct($type)
+    private $checker;
+
+    /**
+     * Set if the type check allows null
+     *
+     * @var bool
+     */
+    private $allowNull;
+
+    /**
+     * @param string $type
+     * @param bool $allowNull
+     */
+    public function __construct($type, $allowNull = false)
     {
+        // type checks
         if (empty($type)) {
             throw new \InvalidArgumentException('The type for ' . get_class($this) . ' is empty');
         }
         if (!is_string($type)) {
             throw new \InvalidArgumentException('The type for ' . get_class($this) . ' is not a string');
         }
+        // allowed types
         $allowed = $this->getAllowedTypes();
         if (is_array($allowed) && count($allowed) && ! in_array($type, $allowed, true)) {
             throw new \InvalidArgumentException(
                 'The type ' . $type . ' for ' . get_class($this) . ' is not a allowed'
             );
         }
+        // object initiation
+        $this->checker = new TypeChecker();
+        $this->allowNull = (bool) $allowNull;
         $this->type = $type;
+    }
+
+    /**
+     * Check if a value match with this type. It may allow nulls.
+     *
+     * @param mixed $value
+     * @return bool
+     */
+    public function check($value)
+    {
+        return $this->checker->checkType($this->getType(), $value, $this->allowNull);
     }
 
     /**

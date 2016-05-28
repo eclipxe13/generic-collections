@@ -2,21 +2,11 @@
 
 use GenericCollections\Collection;
 use GenericCollections\Interfaces\MapInterface;
+use GenericCollections\Internal\DataArray;
 use GenericCollections\Set;
-use GenericCollections\Utils\TypeChecker;
 
-abstract class AbstractMap extends InternalDataArray implements MapInterface, \ArrayAccess
+abstract class AbstractMap extends DataArray implements MapInterface, \ArrayAccess
 {
-    public function checkValueType($value)
-    {
-        return TypeChecker::getInstance()->checkType($this->getValueType(), $value);
-    }
-
-    public function checkKeyType($key)
-    {
-        return TypeChecker::getInstance()->checkType($this->getKeyType(), $key);
-    }
-
     public function containsKey($key)
     {
         return $this->checkKeyType($key) && array_key_exists($key, $this->data);
@@ -24,7 +14,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
 
     public function containsValue($value)
     {
-        return in_array($value, $this->data, $this->comparisonMethodIsIdentical());
+        return in_array($value, $this->data, $this->optionComparisonIsIdentical());
     }
 
     public function get($key)
@@ -103,7 +93,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
     {
         $changed = false;
         $previous = $this->get($key);
-        $isequal = ($this->comparisonMethodIsIdentical())
+        $isequal = ($this->optionComparisonIsIdentical())
             ? ($previous === $value)
             : ($previous == $value);
         if ($isequal) {
@@ -124,7 +114,7 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
             return false;
         }
         $previous = $this->get($key);
-        $isequal = ($this->comparisonMethodIsIdentical())
+        $isequal = ($this->optionComparisonIsIdentical())
             ? ($previous === $current)
             : ($previous == $current);
         if ($isequal) {
@@ -144,11 +134,10 @@ abstract class AbstractMap extends InternalDataArray implements MapInterface, \A
         return new Collection($this->getValueType(), $this->toArray());
     }
 
-
-
     /*
      * Implementations from \ArrayAccess
      */
+    
     /** @inheritdoc */
     public function offsetExists($offset)
     {
