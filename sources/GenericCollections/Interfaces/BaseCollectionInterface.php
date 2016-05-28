@@ -8,9 +8,6 @@ use GenericCollections\Internal\StorageInterface;
  * This methods are implemented in all collections interfaces
  * like Collection and Queue
  *
- * Implements CompareMethodInterface since its required to know
- * the comparison method to use
- *
  * Extends StorageInterface to have the protected $data array storage
  * and basic functions like count() or isEmpty()
  *
