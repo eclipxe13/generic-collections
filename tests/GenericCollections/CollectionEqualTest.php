@@ -1,25 +1,30 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
+use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
 
-/*
- * This only check the methods that behaves different
- * when comparisons are equal
+/**
+ * This only check the Set methods that behaves
+ * different when the option comparison equal is set
  */
 class CollectionEqualTest extends \PHPUnit_Framework_TestCase
 {
 
+    /**
+     * Return an empty Collection<Foo>
+     * @return Collection
+     */
     protected function newFooCollection()
     {
-        return new Collection(Foo::class, [], false);
+        return new Collection(Foo::class, [], Options::COMPARISON_EQUAL);
     }
 
     public function testConstructWithEqual()
     {
         $col = $this->newFooCollection();
 
-        $this->assertSame(false, $col->comparisonMethodIsIdentical());
+        $this->assertSame(false, $col->optionComparisonIsIdentical());
     }
 
     public function testContains()
@@ -67,7 +72,7 @@ class CollectionEqualTest extends \PHPUnit_Framework_TestCase
 
         // item found
         $this->assertTrue($col->remove(new Foo(200)));
-        
+
         // the collection must have other 2 items
         $this->assertCount(2, $col);
     }

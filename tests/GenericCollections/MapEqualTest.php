@@ -1,29 +1,29 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Map;
+use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
 
-/*
+/**
+ * This only check the Map methods that behaves
+ * different when the option comparison equal is set
  *
- * The map is fully tested, what we have to check here is
- * the methods that depends on this behavior, wich are:
  * - containsValue: in_array, comparisonMethodIsIdentical
  * - removeExact: comparisonMethodIsIdentical
  * - replaceExact: comparisonMethodIsIdentical
- *
  */
 class MapEqualTest extends \PHPUnit_Framework_TestCase
 {
     protected function newFooMapWithEqualComparisons()
     {
-        return new Map('string', Foo::class, [], false);
+        return new Map('string', Foo::class, [], Options::COMPARISON_EQUAL);
     }
 
     public function testConstruct()
     {
         $map = $this->newFooMapWithEqualComparisons();
 
-        $this->assertFalse($map->comparisonMethodIsIdentical(), 'The map non-identical says the opposite');
+        $this->assertFalse($map->optionComparisonIsIdentical(), 'The map non-identical says the opposite');
     }
 
     public function testContainsValue()

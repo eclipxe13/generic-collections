@@ -2,20 +2,24 @@
 
 use GenericCollections\Collection;
 use GenericCollections\Interfaces\CollectionInterface;
+use GenericCollections\Options;
 use GenericCollections\Set;
 
-/*
- * As a Set uses the same code as the collection
- * and only changes the add method this is the only thing tested
+/**
+ * Set is a Collection's extended class.
+ * It only overrides the constructor to deny duplicates
  */
-class SetStrictTest extends \PHPUnit_Framework_TestCase
+class SetTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testInheritance()
+    public function testConstructor()
     {
         $set = new Set('int');
         $this->assertInstanceOf(CollectionInterface::class, $set);
         $this->assertInstanceOf(Collection::class, $set);
+        $this->assertSame(true, $set->optionUniqueValues());
+        $this->assertSame(false, $set->optionAllowNullMembers());
+        $this->assertSame(true, $set->optionComparisonIsIdentical());
     }
 
     public function testAdd()
@@ -37,18 +41,9 @@ class SetStrictTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($set->add($bar));
     }
 
-    public function testAddCannotAddItself()
-    {
-        $set = new Set('mixed');
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('It is not allowed for a set to contain itself as an element');
-        $set->add($set);
-    }
-
     public function testAddWithEqual()
     {
-        $set = new Set(Samples\Foo::class, [], false);
+        $set = new Set(Samples\Foo::class, [], Options::COMPARISON_EQUAL);
 
         // are not identical but equal
         $this->assertTrue($set->add(new Samples\Foo(100)));
