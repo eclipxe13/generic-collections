@@ -193,6 +193,22 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(2, $col, 'method remove return true but has the element or remove more than one instance');
     }
 
+    public function testRemoveChangeIndexes()
+    {
+        $foo = new Foo('foo');
+        $bar = new Foo('bar');
+        $baz = new Foo('baz');
+        $collection = new Collection(Foo::class, [
+            $foo,
+            $bar,
+            $baz,
+        ]);
+
+        $collection->remove($bar);
+        $expectedArray = [$foo, $baz];
+        $this->assertSame($expectedArray, $collection->toArray());
+    }
+
 
     public function testRemoveAllSingleElement()
     {
