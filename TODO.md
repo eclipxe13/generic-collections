@@ -85,3 +85,7 @@ $map[2] = $foo; // must throw an exception
 - [ ] Include library on packagist to use it in composer
 - [ ] Create the wiki structure
 - [ ] Document classes and examples
+
+## Integration
+
+- [X] Include dependences instead of installing by Travis CI
