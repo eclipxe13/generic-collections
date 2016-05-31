@@ -8,9 +8,8 @@ use GenericCollections\Utils\TypeProperty;
 /**
  * Generic collection implementation
  *
- * The elements comparison can be defined ad identical or equal,
- * if identical searchs match with '==='
- * if equal searchs match with '=='
+ * Options:
+ * - Defaults: not allow nulls, allow duplicates, identical comparisons
  *
  * @package GenericCollections
  */
@@ -20,15 +19,6 @@ class Collection extends AbstractCollection
     use OptionsProperty;
 
     /**
-     * Generic collection
-     *
-     * example: `new Collection(Foo::class, [new Foo(), new Foo()]`
-     *
-     * Options:
-     * - Defaults: not allow nulls, identical comparisons
-     * - It is not possible to allow duplicates, use a Collection instead
-     * - If allow null elements is enabled only 1 value can be null
-     *
      * @param string $elementType
      * @param array $elements
      * @param int $options
