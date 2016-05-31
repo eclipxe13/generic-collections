@@ -22,7 +22,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([], $col->toArray());
         $this->assertSame(true, $col->optionComparisonIsIdentical());
         $this->assertSame(false, $col->optionAllowNullMembers());
-        $this->assertSame(false, $col->optionAllowNullMembers());
+        $this->assertSame(false, $col->optionUniqueValues());
     }
 
     public function testAdd()
