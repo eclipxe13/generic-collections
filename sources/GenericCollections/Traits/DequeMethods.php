@@ -4,14 +4,17 @@ namespace GenericCollections\Traits;
 
 use GenericCollections\Internal\DoubleLinkedList;
 
+/**
+ * This trait include all deque standard methods but add and offer,
+ * those can be found in DequeFifoMethods and DequeLifoMethods.
+ *
+ * @property DoubleLinkedList $storage
+ * @method protected string containerInternalName()
+ *
+ * @package GenericCollections\Traits
+ */
 trait DequeMethods
 {
-    /** @var DoubleLinkedList */
-    protected $storage;
-    
-    abstract protected function containerInternalName();
-    
-    
     /**
      * Protected method to do the checks for add and offer methods
      *

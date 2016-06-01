@@ -1,10 +1,15 @@
 <?php namespace GenericCollections\Traits;
 
+/**
+ * Class QueueFifoMethods
+ *
+ * @method void addLast(mixed $element)
+ * @method bool offerLast(mixed $element)
+ *
+ * @package GenericCollections\Traits
+ */
 trait QueueFifoMethods
 {
-    abstract protected function addLast($element);
-    abstract protected function offerLast($element);
-    
     public function add($element)
     {
         $this->addLast($element);

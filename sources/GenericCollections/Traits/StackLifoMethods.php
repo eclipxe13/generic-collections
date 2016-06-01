@@ -1,10 +1,15 @@
 <?php namespace GenericCollections\Traits;
 
+/**
+ * Class StackLifoMethods
+ *
+ * @method void addLast(mixed $element)
+ * @method bool offerLast(mixed $element)
+ *
+ * @package GenericCollections\Traits
+ */
 trait StackLifoMethods
 {
-    abstract protected function addFirst($element);
-    abstract protected function offerFirst($element);
-
     public function add($element)
     {
         $this->addFirst($element);
