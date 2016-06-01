@@ -6,14 +6,15 @@
  * AbstractCollection and AbstractMap
  *
  * This methods are declared to avoid warnings
- * @method string getElementType()
- * @method bool add(mixed $element)
- * @method bool contains(array $elements)
  *
  * @package GenericCollections\Traits
  */
 trait CollectionMethods
 {
+    abstract public function getElementType();
+    abstract public function add($element);
+    abstract public function contains($element);
+
     public function addAll(array $elements)
     {
         $added = false;
