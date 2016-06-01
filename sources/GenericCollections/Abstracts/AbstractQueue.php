@@ -3,29 +3,28 @@
 use GenericCollections\Interfaces\QueueInterface;
 use GenericCollections\Internal\DataDoubleLinkedList;
 use GenericCollections\Traits\CollectionMethods;
-use GenericCollections\Traits\DequeMethods;
-use GenericCollections\Traits\QueueFifoMethods;
+use GenericCollections\Traits\DequeCommonMethods;
 
 abstract class AbstractQueue extends DataDoubleLinkedList implements QueueInterface
 {
     use CollectionMethods;
 
-    use DequeMethods {
-        addFirst as private;
-        addLast as private;
-        offerFirst as private;
-        offerLast as private;
-        getFirst as private;
-        getLast as private;
-        peekFirst as private;
-        peekLast as private;
-        removeFirst as private;
-        removeLast as private;
-        pollFirst as private;
-        pollLast as private;
+    use DequeCommonMethods {
+        addLast as private;     // used in add
+        addFirst as private;    // not really needed
+        offerLast as offer;
+        offerFirst as private;  // not really needed
+        getFirst as element;
+        peekFirst as peek;
+        removeFirst as remove;
+        pollFirst as poll;
     }
-    
-    use QueueFifoMethods;
+
+    public function add($element)
+    {
+        $this->addLast($element);
+        return true;
+    }
 
     protected function containerInternalName()
     {

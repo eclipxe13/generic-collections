@@ -5,15 +5,14 @@ namespace GenericCollections\Traits;
 use GenericCollections\Internal\DoubleLinkedList;
 
 /**
- * This trait include all deque standard methods but add and offer,
- * those can be found in DequeFifoMethods and DequeLifoMethods.
+ * This trait include all deque standard methods to queue, stack and deque
  *
  * @property DoubleLinkedList $storage
  * @method protected string containerInternalName()
  *
  * @package GenericCollections\Traits
  */
-trait DequeMethods
+trait DequeCommonMethods
 {
     /**
      * Protected method to do the checks for add and offer methods
@@ -87,19 +86,6 @@ trait DequeMethods
         return $this->storage->bottom();
     }
 
-    public function getLast()
-    {
-        if ($this->isEmpty()) {
-            throw new \LogicException('Can not get an element from an empty ' . $this->containerInternalName());
-        }
-        return $this->storage->top();
-    }
-
-    public function element()
-    {
-        return $this->getFirst();
-    }
-
     public function peekFirst()
     {
         if ($this->isEmpty()) {
@@ -107,20 +93,7 @@ trait DequeMethods
         }
         return $this->storage->bottom();
     }
-
-    public function peekLast()
-    {
-        if ($this->isEmpty()) {
-            return null;
-        }
-        return $this->storage->top();
-    }
-
-    public function peek()
-    {
-        return $this->peekFirst();
-    }
-
+    
     public function removeFirst()
     {
         if ($this->isEmpty()) {
@@ -128,39 +101,13 @@ trait DequeMethods
         }
         return $this->storage->shift();
     }
-
-    public function removeLast()
-    {
-        if ($this->isEmpty()) {
-            throw new \LogicException('Can not remove an element from an empty ' . $this->containerInternalName());
-        }
-        return $this->storage->pop();
-    }
-
-    public function remove()
-    {
-        return $this->removeFirst();
-    }
-
+    
     public function pollFirst()
     {
         if ($this->isEmpty()) {
             return null;
         }
         return $this->storage->shift();
-    }
-
-    public function pollLast()
-    {
-        if ($this->isEmpty()) {
-            return null;
-        }
-        return $this->storage->pop();
-    }
-
-    public function poll()
-    {
-        return $this->pollFirst();
     }
 
     public function contains($element)
