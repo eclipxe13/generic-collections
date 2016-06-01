@@ -4,9 +4,9 @@ use GenericCollections\Interfaces\QueueInterface;
 use GenericCollections\Internal\DataDoubleLinkedList;
 use GenericCollections\Traits\CollectionMethods;
 use GenericCollections\Traits\DequeMethods;
-use GenericCollections\Traits\QueueFifoMethods;
+use GenericCollections\Traits\StackLifoMethods;
 
-abstract class AbstractQueue extends DataDoubleLinkedList implements QueueInterface
+abstract class AbstractStack extends DataDoubleLinkedList implements QueueInterface
 {
     use CollectionMethods;
 
@@ -25,10 +25,10 @@ abstract class AbstractQueue extends DataDoubleLinkedList implements QueueInterf
         pollLast as private;
     }
     
-    use QueueFifoMethods;
+    use StackLifoMethods;
 
     protected function containerInternalName()
     {
-        return 'queue';
+        return 'stack';
     }
 }

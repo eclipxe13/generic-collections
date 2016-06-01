@@ -3,7 +3,15 @@
 use GenericCollections\Queue;
 use GenericCollections\Tests\Samples\Foo;
 
-class QueueTest extends \PHPUnit_Framework_TestCase
+/**
+ * Test a queue with default behavior:
+ * - do not allow nulls
+ * - strict comparisons
+ * - allow duplicates
+ *
+ * @package GenericCollections\Tests
+ */
+class QueueDefaultTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructor()
     {
@@ -84,7 +92,7 @@ class QueueTest extends \PHPUnit_Framework_TestCase
         $queue = new Queue(Foo::class, [$four, $five, $nine]);
 
         $retrieved = $queue->element();
-        $this->assertSame($nine, $retrieved);
+        $this->assertSame($four, $retrieved);
         $this->assertCount(3, $queue);
     }
 
@@ -109,7 +117,7 @@ class QueueTest extends \PHPUnit_Framework_TestCase
         $queue->addAll([$four, $five, $nine]);
 
         $retrieved = $queue->peek();
-        $this->assertSame($nine, $retrieved);
+        $this->assertSame($four, $retrieved);
         $this->assertCount(3, $queue);
     }
 
@@ -121,7 +129,7 @@ class QueueTest extends \PHPUnit_Framework_TestCase
         $queue = new Queue(Foo::class, [$four, $five, $nine]);
 
         $removed = $queue->remove();
-        $this->assertSame($nine, $removed);
+        $this->assertSame($four, $removed);
         $this->assertCount(2, $queue);
     }
 
@@ -146,7 +154,7 @@ class QueueTest extends \PHPUnit_Framework_TestCase
         $queue->addAll([$four, $five, $nine]);
 
         $removed = $queue->poll();
-        $this->assertSame($nine, $removed);
+        $this->assertSame($four, $removed);
         $this->assertCount(2, $queue);
     }
 }
