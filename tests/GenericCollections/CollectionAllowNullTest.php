@@ -27,7 +27,7 @@ class CollectionAllowNullTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(true, $this->collection->optionAllowNullMembers());
     }
 
-    public function test()
+    public function testCheckElementTypeNull()
     {
         $this->assertTrue($this->collection->checkElementType(null));
     }
