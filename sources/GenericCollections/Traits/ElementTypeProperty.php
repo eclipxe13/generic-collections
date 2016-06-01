@@ -18,7 +18,6 @@ trait ElementTypeProperty
      */
     private $elementType;
 
-
     public function getElementType()
     {
         return (string) $this->elementType;

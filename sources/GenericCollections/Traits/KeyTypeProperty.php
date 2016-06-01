@@ -18,8 +18,7 @@ trait KeyTypeProperty
      * @var TypeProperty
      */
     private $keyType;
-
-
+    
     public function getKeyType()
     {
         return (string) $this->keyType;
