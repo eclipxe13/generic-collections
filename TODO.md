@@ -1,41 +1,30 @@
 # eclipxe/generic-collections: To do list
 
+## Doubts
+
+A deque (also queue and stack) throws exception on add when:
+
+- null element and deque does not allow nulls
+- type missmatch
+- duplicated element and deque does not allow duplicates
+
+When should throw an exception on offer? looks like when:
+
+- null element and deque does not allow nulls
+- type missmatch
+
+And return FALSE when
+
+- duplicated element and deque does not allow duplicates
+
+It would be better to just return false on offer and never throw a exception?
+
 ## Ideas
 
-- [ ] TypeChecker could be part of of TypeProperty, in that way every property would
+- [X] TypeChecker could be part of of TypeProperty, in that way every property would
       know what to do and if it allows nulls. It would be possible to check against more than one type.
-- [ ] Implement option allowNulls for collections and maps, omits type checking for NULL elements/values.
+- [X] Implement option allowNulls for collections and maps, omits type checking for NULL elements/values.
 
-### Class allowNull members
-
-If a class allow `null` members then it would be possible to insert inside a map a null value
- like `$map->put('x', null);`. This is permitted in java so it can be considered a correct behavior.
-
-The classes that are impacted by this are
-- `Collection` and its derivated classes like `Set`
-- `Map`
-
-I found different stategies for this:
-
-```php
-// plain in the constructor as 4 argument
-$map = new Map('string', Foo::class, true, true);
-
-// as option flags
-$map = new Map('string', Foo::class, MAP::ALLOWNULLS + MAP::COMPAREEQUALS);
-
-// as an options object, it looks like hell!
-$options = new MapOptions([
-    MapOptions::NULLS_ARE_ALLOWED,
-    MapOptions::COMPARISON_EQUALS
-]);
-$map = new Map('string', Foo::class, $options);
-```
-
-Following the current coding approach it would be better to just implement the options flag
-and also offer the MapOptions object to help extending the classes.
-
-Anyhow, to be able to manage this behavior we will need extend the interfaces to support options.
 
 ### TypedPropertiesMap
 
@@ -43,7 +32,7 @@ This is an special map where every member has its own type.
 It could be very useful for arrays as entities:
 
 ```php
-// Class User extends TypedProperties, so:
+// User class extends TypedProperties, so:
 $user = new User();
 $user['id'] = 12345; // (id => integer)
 $user['name'] = 'some text'; // (name => string)
@@ -82,9 +71,10 @@ $map[2] = $foo; // must throw an exception
 
 ## Project
 
-- [ ] Include library on packagist to use it in composer
+- [X] Include library on packagist to use it in composer
 - [ ] Create the wiki structure
 - [ ] Document classes and examples
+- [ ] Release first version
 
 ## Integration
 
