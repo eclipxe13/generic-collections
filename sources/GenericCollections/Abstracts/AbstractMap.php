@@ -58,6 +58,13 @@ abstract class AbstractMap extends DataArray implements MapInterface, \ArrayAcce
                 . ' expected ' . $this->getValueType() . '.'
             );
         }
+        if ($this->optionUniqueValues() and $this->containsValue($value)) {
+            throw new \InvalidArgumentException(
+                'The value provided for ' . get_class($this)
+                . '::put is not unique,'
+                . ' this map does not allow duplicated values.'
+            );
+        }
         $previous = $this->get($key);
         $this->data[$key] = $value;
         return $previous;
