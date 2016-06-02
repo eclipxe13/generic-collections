@@ -14,12 +14,6 @@ use GenericCollections\Internal\DoubleLinkedList;
 trait DequeCommonMethods
 {
     /**
-     * Defined exactly as in DataDoubleLinkedList
-     * @var DoubleLinkedList
-     */
-    protected $storage;
-
-    /**
      * Protected method to do the checks for add and offer methods
      *
      * @param $element
