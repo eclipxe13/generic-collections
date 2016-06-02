@@ -46,26 +46,28 @@ class QueueDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testAdd()
     {
-        $foo = new Foo('Foo Bar');
+        $foo = new Foo('Foo');
+        $bar = new Foo('Bar');
         $queue = new Queue(Foo::class);
 
         $this->assertTrue($queue->add($foo));
         $this->assertSame([$foo], $queue->toArray());
 
-        $this->assertTrue($queue->add($foo));
-        $this->assertSame([$foo, $foo], $queue->toArray());
+        $this->assertTrue($queue->add($bar));
+        $this->assertSame([$foo, $bar], $queue->toArray());
     }
 
     public function testOffer()
     {
-        $foo = new Foo('Foo Bar');
+        $foo = new Foo('Foo');
+        $bar = new Foo('Bar');
         $queue = new Queue(Foo::class);
 
         $this->assertTrue($queue->offer($foo));
         $this->assertSame([$foo], $queue->toArray());
 
-        $this->assertTrue($queue->offer($foo));
-        $this->assertSame([$foo, $foo], $queue->toArray());
+        $this->assertTrue($queue->offer($bar));
+        $this->assertSame([$foo, $bar], $queue->toArray());
     }
 
     public function testIterateOverQueue()
@@ -146,8 +148,6 @@ class QueueDefaultTest extends \PHPUnit_Framework_TestCase
     public function testPoll()
     {
         $queue = new Queue(Foo::class);
-        $this->assertNull($queue->poll());
-
         $four = new Foo('four');
         $five = new Foo('five');
         $nine = new Foo('nine');
@@ -156,5 +156,11 @@ class QueueDefaultTest extends \PHPUnit_Framework_TestCase
         $removed = $queue->poll();
         $this->assertSame($four, $removed);
         $this->assertCount(2, $queue);
+    }
+
+    public function testPollWhenEmpty()
+    {
+        $queue = new Queue(Foo::class);
+        $this->assertNull($queue->poll());
     }
 }
