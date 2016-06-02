@@ -7,13 +7,18 @@ use GenericCollections\Internal\DoubleLinkedList;
 /**
  * This trait include all deque standard methods to queue, stack and deque
  *
- * @property DoubleLinkedList $storage
- * @method protected string containerInternalName()
+ * @mixin \GenericCollections\Abstracts\AbstractDeque
  *
  * @package GenericCollections\Traits
  */
 trait DequeCommonMethods
 {
+    /**
+     * Defined exactly as in DataDoubleLinkedList
+     * @var DoubleLinkedList
+     */
+    protected $storage;
+
     /**
      * Protected method to do the checks for add and offer methods
      *
@@ -93,7 +98,7 @@ trait DequeCommonMethods
         }
         return $this->storage->bottom();
     }
-    
+
     public function removeFirst()
     {
         if ($this->isEmpty()) {
@@ -101,7 +106,7 @@ trait DequeCommonMethods
         }
         return $this->storage->shift();
     }
-    
+
     public function pollFirst()
     {
         if ($this->isEmpty()) {

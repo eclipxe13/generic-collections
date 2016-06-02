@@ -7,14 +7,12 @@
  *
  * This methods are declared to avoid warnings
  *
+ * @mixin \GenericCollections\Abstracts\AbstractCollection
+ *
  * @package GenericCollections\Traits
  */
 trait CollectionMethods
 {
-    abstract public function getElementType();
-    abstract public function add($element);
-    abstract public function contains($element);
-
     public function addAll(array $elements)
     {
         $added = false;

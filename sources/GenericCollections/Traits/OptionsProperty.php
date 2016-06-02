@@ -2,6 +2,14 @@
 
 use GenericCollections\Options;
 
+/**
+ * Class OptionsProperty
+ * used in almost every first level class
+ *
+ * @mixin \GenericCollections\Collection
+ *
+ * @package GenericCollections\Traits
+ */
 trait OptionsProperty
 {
     /**

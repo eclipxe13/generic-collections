@@ -3,12 +3,10 @@
 use GenericCollections\Utils\TypeProperty;
 
 /**
- * Trait KeyTypeProperty. Main use: Maps
+ * Trait KeyTypeProperty.
+ * Used in: Maps
  *
- * Inserts into the class the following methods:
- * private TypeProperty $keytype
- * public string getKeyType()
- * public bool checkKeyType($element)
+ * @mixin \GenericCollections\Map
  *
  * @package GenericCollections\Traits
  */

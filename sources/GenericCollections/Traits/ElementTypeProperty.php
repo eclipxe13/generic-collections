@@ -3,12 +3,11 @@
 use GenericCollections\Utils\TypeProperty;
 
 /**
- * Trait ElementTypeProperty. Main use: Collections and Map (renaming element to value)
+ * Trait ElementTypeProperty.
+ * used in Collections and Map (renaming element to value)
  *
- * Inserts into the class the following methods:
- * private TypeProperty $elementType
- * public string getElementType()
- * public bool checkElementType($element)
+ * @mixin \GenericCollections\Collection
+ *
  * @package GenericCollections\Traits
  */
 trait ElementTypeProperty
