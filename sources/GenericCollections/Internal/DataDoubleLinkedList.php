@@ -13,13 +13,13 @@ abstract class DataDoubleLinkedList implements StorageInterface
      * Create a new empty DoubleLinkedList and set it
      * on protected variable $storage
      *
-     * @return DoubleLinkedList
+     * @return void
      */
     abstract protected function createStorageObject();
 
     public function clear()
     {
-        $this->createStorageObject();
+        $this->storage->clear();
     }
 
     public function isEmpty()

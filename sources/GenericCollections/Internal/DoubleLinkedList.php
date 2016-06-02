@@ -15,7 +15,7 @@ class DoubleLinkedList extends \SplDoublyLinkedList
      * @var bool
      */
     private $strict;
-    
+
     public function __construct($strict)
     {
         $this->strict = (bool) $strict;
@@ -42,7 +42,7 @@ class DoubleLinkedList extends \SplDoublyLinkedList
     {
         return (-1 !== $this->search($element));
     }
-    
+
     /**
      * Perform a linear search inside the storage,
      * because the elements contained are not sorted.
@@ -69,5 +69,18 @@ class DoubleLinkedList extends \SplDoublyLinkedList
             $this->next();
         }
         return $position;
+    }
+
+    /**
+     * Clear the contents of the container
+     *
+     * There is a bug and patch for SplDoublyLinkedList https://bugs.php.net/bug.php?id=60759
+     * that does the same operation (pop until count == 0)
+     */
+    public function clear()
+    {
+        while ($this->count() > 0) {
+            $this->pop();
+        }
     }
 }
