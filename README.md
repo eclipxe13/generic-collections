@@ -89,6 +89,11 @@ Security Support. This means that it will offer compatibility with PHP 5.6+ unti
 The support for cersion 5.5+ is not included since this PHP version will end 2016-06-10
 and that is lower than the release of first version of this library.
 
+Not taking particular efforts to make this library compatible with hhvm, hhvm have Generics support included
+and also has a collection library. I have seen differences on how hack language implement traits (like the
+ability to use abstracts methods) that are not compatible. Also I've seen a problem on hhvm 3.6.6
+(the one is using Travis CI)implementation of `SplDoubleLinkedList` that are not present on version 3.12.1.
+
 ## Documentation and examples
 
 WIP. Be patient please.
