@@ -78,46 +78,35 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
         $this->assertSame([$foo, $bar], $this->deque->toArray());
     }
 
-    public function testAddFirstThrowsExceptionOnNull()
+    public function providerAddOfferMethods()
+    {
+        return [
+            ['add'], ['addFirst'], ['addLast'], ['offer'], ['offerFirst'], ['offerLast']
+        ];
+    }
+
+    /**
+     * @param string $method
+     * @dataProvider providerAddOfferMethods
+     */
+    public function testDequeDoNotAllowNulls($method)
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The deque does not allow null elements');
-        $this->deque->addFirst(null);
+
+        $this->deque->{$method}(null);
     }
 
-    public function testAddLastThrowsExceptionOnNull()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The deque does not allow null elements');
-        $this->deque->addLast(null);
-    }
-
-    public function testAddThrowsExceptionOnNull()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The deque does not allow null elements');
-        $this->deque->add(null);
-    }
-
-    public function testAddFirstThrowsExceptionOnInvalidType()
+    /**
+     * @param string $method
+     * @dataProvider providerAddOfferMethods
+     */
+    public function testDequeThrowsExceptionOnInvalidType($method)
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessageRegExp('/Invalid element type; the deque (.*) was expecting a (.*) type/');
-        $this->deque->addFirst(new \stdClass());
-    }
 
-    public function testAddLastThrowsExceptionOnInvalidType()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Invalid element type; the deque (.*) was expecting a (.*) type/');
-        $this->deque->addLast(new \stdClass());
-    }
-
-    public function testAddThrowsExceptionOnInvalidType()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Invalid element type; the deque (.*) was expecting a (.*) type/');
-        $this->deque->add(new \stdClass());
+        $this->deque->{$method}(new \stdClass());
     }
 
     public function testAddAll()
@@ -179,7 +168,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * offer is basically the same as add without exceptions
+     * offer is basically the same as add without exceptions on duplicates
      */
     public function testOffer()
     {
@@ -190,48 +179,6 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->deque->offer($bar));
 
         $this->assertSame([$foo, $bar], $this->deque->toArray());
-    }
-
-    public function testOfferFirstThrowsExceptionOnNull()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The deque does not allow null elements');
-        $this->deque->offerFirst(null);
-    }
-
-    public function testOfferLastThrowsExceptionOnNull()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The deque does not allow null elements');
-        $this->deque->offerLast(null);
-    }
-
-    public function testOfferThrowsExceptionOnNull()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The deque does not allow null elements');
-        $this->deque->offer(null);
-    }
-
-    public function testOfferFirstThrowsExceptionOnInvalidType()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Invalid element type; the deque (.*) was expecting a (.*) type/');
-        $this->deque->offerFirst(new \stdClass());
-    }
-
-    public function testOfferLastThrowsExceptionOnInvalidType()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Invalid element type; the deque (.*) was expecting a (.*) type/');
-        $this->deque->offerLast(new \stdClass());
-    }
-
-    public function testOfferThrowsExceptionOnInvalidType()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Invalid element type; the deque (.*) was expecting a (.*) type/');
-        $this->deque->offer(new \stdClass());
     }
 
     public function testGetFirst()
@@ -364,5 +311,29 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
         $this->populateDeque();
         $this->assertSame($this->first, $this->deque->poll());
         $this->assertSame([$this->second], $this->deque->toArray());
+    }
+
+    public function testContains()
+    {
+        $this->populateDeque();
+
+        $this->assertTrue($this->deque->contains($this->first));
+        $this->assertTrue($this->deque->contains($this->second));
+        $this->assertFalse($this->deque->contains(new Foo('non existent')));
+
+        $similar = clone($this->first);
+        $this->assertFalse($this->deque->contains($similar));
+    }
+
+    /**
+     * @param string $method
+     * @dataProvider providerAddOfferMethods
+     */
+    public function testDequeAllowsDuplicatedMembers($method)
+    {
+        $this->populateDeque();
+
+        $this->deque->{$method}($this->first);
+        $this->assertCount(3, $this->deque);
     }
 }
