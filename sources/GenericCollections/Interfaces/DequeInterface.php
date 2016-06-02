@@ -52,7 +52,7 @@ interface DequeInterface extends QueueInterface
     public function offerLast($element);
 
     /**
-     * Retrieves, but does not remove, the fisrt element of this deque. This method
+     * Retrieves, but does not remove, the first element of this deque. This method
      * differs from peekFirst only in that it throws an exception if this deque is empty.
      *
      * @return mixed the first element of this deque

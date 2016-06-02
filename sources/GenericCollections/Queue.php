@@ -6,11 +6,10 @@ use GenericCollections\Traits\OptionsProperty;
 use GenericCollections\Utils\TypeProperty;
 
 /**
- * Class Queue (FIFO behavior)
+ * Generic Queue implementation (FIFO behavior)
  *
  * @package GenericCollections
  */
-
 class Queue extends AbstractQueue
 {
     use ElementTypeProperty;

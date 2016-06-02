@@ -6,6 +6,11 @@ use GenericCollections\Traits\ElementTypeProperty;
 use GenericCollections\Traits\OptionsProperty;
 use GenericCollections\Utils\TypeProperty;
 
+/**
+ * Generic Stack implementation (LIFO behavior)
+ *
+ * @package GenericCollections
+ */
 class Stack extends AbstractStack implements StackInterface
 {
     use ElementTypeProperty;

@@ -14,8 +14,11 @@ use GenericCollections\Utils\TypeProperty;
  * - Defaults: not allow nulls, allow duplicates, identical comparisons
  *
  * It is not recommended to allow nulls since several methods
- * (getFirst, getLast, element, pollFirst, pollLast, poll, peekFirst, peekLast and peek)
+ * (element, pollFirst, pollLast, poll, peekFirst, peekLast and peek)
  * returns null if not found or empty
+ *
+ * It is not recommended to set unique values option, this will search inside the
+ * container on every insert and it could be expensive on large containers
  *
  * @package GenericCollections
  */
