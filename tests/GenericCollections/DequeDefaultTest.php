@@ -336,4 +336,18 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
         $this->deque->{$method}($this->first);
         $this->assertCount(3, $this->deque);
     }
+
+    public function testDequeGetIterator()
+    {
+        $this->populateDeque();
+        $iterations = 0;
+        $array = [];
+        foreach ($this->deque as $key => $value) {
+            $array[$key] = $value;
+            $iterations = $iterations + 1;
+        }
+        $expectedArray = [$this->first, $this->second];
+        $this->assertEquals(2, $iterations);
+        $this->assertSame($expectedArray, $array);
+    }
 }

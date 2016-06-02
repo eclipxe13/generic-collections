@@ -19,21 +19,14 @@ class DoubleLinkedListTest extends \PHPUnit_Framework_TestCase
         $this->bar = new Foo('Bar');
         $this->nonExistent = new Foo('Not existent');
         $this->similarFoo = new Foo('Foo');
-        $this->createDoubleLinkedListIdentical();
-    }
-
-    private function createDoubleLinkedListIdentical()
-    {
-        $this->doubleLinkedList = new DoubleLinkedList(true);
+        $this->doubleLinkedList = new DoubleLinkedList();
         $this->doubleLinkedList->push($this->foo);
         $this->doubleLinkedList->push($this->bar);
     }
 
     private function createDoubleLinkedListEqual()
     {
-        $this->doubleLinkedList = new DoubleLinkedList(false);
-        $this->doubleLinkedList->push($this->foo);
-        $this->doubleLinkedList->push($this->bar);
+        $this->doubleLinkedList->strictComparisonOff();
     }
 
     public function testDoubleLinkedListExtendsSplClass()
@@ -41,13 +34,24 @@ class DoubleLinkedListTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(\SplDoublyLinkedList::class, $this->doubleLinkedList);
     }
 
-    public function testLastIndex()
+    public function testConstructorDefaultComparison()
     {
-        $this->assertCount(2, $this->doubleLinkedList);
-        $this->assertSame(1, $this->doubleLinkedList->lastIndex());
+        $this->assertTrue($this->doubleLinkedList->getStrictComparison());
+    }
 
-        $emptyDoubleLinkedList = new DoubleLinkedList(true);
-        $this->assertSame(-1, $emptyDoubleLinkedList->lastIndex());
+    public function testStrictComparisonOnOff()
+    {
+        // turn on (should be the default)
+        $this->doubleLinkedList->strictComparisonOn();
+        $this->assertTrue($this->doubleLinkedList->getStrictComparison());
+
+        // turn off
+        $this->doubleLinkedList->strictComparisonOff();
+        $this->assertFalse($this->doubleLinkedList->getStrictComparison());
+
+        // turn on (after off)
+        $this->doubleLinkedList->strictComparisonOn();
+        $this->assertTrue($this->doubleLinkedList->getStrictComparison());
     }
 
     public function testSearch()

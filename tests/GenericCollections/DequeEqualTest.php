@@ -25,7 +25,7 @@ class DequeEqualTest extends \PHPUnit_Framework_TestCase
         parent::setUp();
         $this->foo = new Foo('foo');
         $this->bar = new Foo('bar');
-        $this->equalToFoo = new Foo('foo');
+        $this->equalToFoo = clone $this->foo;
         $this->deque = new Deque(Foo::class, [
             $this->foo,
             $this->bar
