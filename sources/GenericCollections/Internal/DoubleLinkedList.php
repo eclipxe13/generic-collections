@@ -1,9 +1,16 @@
 <?php namespace GenericCollections\Internal;
 
 /**
- * This is a linked list that contains elements indexed by number
+ * This is a double linked list that contains elements by position
  *
- * It extends \SplDoublyLinkedList to be able to search inside
+ * It extends \SplDoublyLinkedList and add this methods:
+ * - contains: return if the value is found in the list
+ * - search: search for a value in the list, return the index
+ * - clear: clear the list
+ *
+ * The search depends on the flag strictComparison.
+ * If is TRUE then the comparison is identical (===), this is the default behavior
+ * If is FALSE then the comparison is equal (==)
  *
  * @package GenericCollections\Internal
  */
@@ -14,23 +21,23 @@ class DoubleLinkedList extends \SplDoublyLinkedList
      *
      * @var bool
      */
-    private $strict;
+    private $strict = true;
 
-    public function __construct($strict)
+    public function strictComparisonOn()
     {
-        $this->strict = (bool) $strict;
+        $this->strict = true;
     }
 
-    /**
-     * Return the count of items minus one.
-     * If the storage is empty return -1
-     *
-     * @return int
-     */
-    public function lastIndex()
+    public function strictComparisonOff()
     {
-        return $this->count() - 1;
+        $this->strict = false;
     }
+    
+    public function getStrictComparison()
+    {
+        return $this->strict;
+    }
+
 
     /**
      * Returns TRUE if the element exist in the storage
@@ -54,19 +61,14 @@ class DoubleLinkedList extends \SplDoublyLinkedList
      */
     public function search($element)
     {
-        if ($this->isEmpty()) {
-            return -1;
-        }
-        $current = 0;
         $position = -1;
-        $this->rewind();
-        while ($this->valid()) {
-            if (($this->strict) ? $this->current() === $element : $this->current() == $element) {
-                $position = $current;
-                break;
+        if (! $this->isEmpty()) {
+            foreach ($this as $index => $current) {
+                if (($this->strict) ? $current === $element : $current == $element) {
+                    $position = $index;
+                    break;
+                }
             }
-            $current = $current + 1;
-            $this->next();
         }
         return $position;
     }
@@ -74,7 +76,7 @@ class DoubleLinkedList extends \SplDoublyLinkedList
     /**
      * Clear the contents of the container
      *
-     * There is a bug and patch for SplDoublyLinkedList https://bugs.php.net/bug.php?id=60759
+     * There is a bug & patch for SplDoublyLinkedList https://bugs.php.net/bug.php?id=60759
      * that does the same operation (pop until count == 0)
      */
     public function clear()
