@@ -117,6 +117,9 @@ trait DequeCommonMethods
 
     protected function createStorageObject()
     {
-        $this->storage = new DoubleLinkedList($this->optionComparisonIsIdentical());
+        $this->storage = new DoubleLinkedList();
+        if (! $this->optionComparisonIsIdentical()) {
+            $this->storage->strictComparisonOff();
+        }
     }
 }
