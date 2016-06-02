@@ -50,12 +50,24 @@ class Foos extends AbstractCollection
 Basic classes:
 
 - [x] Collection: A collection represents a group of elements of the same type.
-- [x] Set: A collection that does not allow repeated elements
+- [x] Set: A collection that only allows unique elements
+- [x] Queue: Collection for holding elements (FIFO)
+- [x] Deque: Double Ended Queue
 
 Classes that implement `\ArrayAccess`
 
 - [x] Map: A mapping from keys to values.
 - [ ] List: A collection that can be accesed by their integer index and search elements on the list.
+
+Additional classes:
+- [x] Stack: Collection for holding elements (LIFO)
+- [ ] Shape: Structure with typed values
+
+All classes have these additional options:
+
+- allow null elements/values
+- allow only unique elements/values
+- comparison equal: make equality comparisons between members instead of identical comparisons
 
 ## About
 

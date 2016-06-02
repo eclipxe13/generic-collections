@@ -41,6 +41,8 @@ $user['birthdate'] = 'in the past'; // throw an exception, 'birthdate' expect a 
 
 See <https://github.com/ramsey/collection/blob/master/src/Map/NamedParameterMap.php>
 
+Also see Hack Shape <https://docs.hhvm.com/hack/overview/collections#what-are-shapes>
+
 ### Specialized maps: IntegerKeysMap, StringKeysMap, HashMap
 
 As php only allows this type of keys in the array, could be possible to imlement this two
@@ -68,6 +70,7 @@ $map[2] = $foo; // must throw an exception
 
 - [x] Implement \ArrayAccess interface on Map
 - [ ] Document GenericCollections\Abstracts\AbstractCollection
+- [ ] Build more test on Deque, Queue and Stack (100% coverage)
 
 ## Project
 
@@ -79,3 +82,5 @@ $map[2] = $foo; // must throw an exception
 ## Integration
 
 - [X] Include dependences instead of installing by Travis CI
+- [ ] Travis CI fails on phpunit on hhvm 3.6.6, remove and pop does not remove the last element.
+      I'm testing using hhvm 3.12.1 without any issue.
