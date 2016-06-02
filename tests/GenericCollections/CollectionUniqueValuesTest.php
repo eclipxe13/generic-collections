@@ -6,7 +6,7 @@ use GenericCollections\Tests\Samples\Foo;
 
 /**
  * This only check the Collection methods that behaves
- * different when the option comparison equal is set:
+ * different when the option unique values is set:
  *
  * - method add
  */
