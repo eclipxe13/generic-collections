@@ -40,7 +40,7 @@ class DoubleLinkedList extends \SplDoublyLinkedList
      */
     public function contains($element)
     {
-        return $this->search($element) > 0;
+        return (-1 !== $this->search($element));
     }
     
     /**
@@ -59,6 +59,7 @@ class DoubleLinkedList extends \SplDoublyLinkedList
         }
         $current = 0;
         $position = -1;
+        $this->rewind();
         while ($this->valid()) {
             if (($this->strict) ? $this->current() === $element : $this->current() == $element) {
                 $position = $current;
