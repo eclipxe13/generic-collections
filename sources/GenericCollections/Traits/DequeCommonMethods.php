@@ -12,6 +12,49 @@ use GenericCollections\Internal\DoubleLinkedList;
 trait DequeCommonMethods
 {
     /**
+     * This function must return the container internal name, like 'deque', 'queue' or 'stack'
+     * @return string
+     */
+    abstract protected function containerInternalName();
+
+    /**
+     * @see \GenericCollections\Interfaces\BaseOptions::optionAllowNullMembers
+     * @return bool
+     */
+    abstract public function optionAllowNullMembers();
+    
+    /**
+     * @see \GenericCollections\Interfaces\BaseOptions::optionUniqueValues
+     * @return bool
+     */
+    abstract public function optionUniqueValues();
+
+    /**
+     * @see \GenericCollections\Interfaces\BaseOptions::optionComparisonIsIdentical
+     * @return bool
+     */
+    abstract public function optionComparisonIsIdentical();
+
+    /**
+     * @see \GenericCollections\Interfaces\BaseCollectionInterface::checkElementType
+     * @param mixed $element
+     * @return bool
+     */
+    abstract public function checkElementType($element);
+    
+    /**
+     * @see \GenericCollections\Interfaces\BaseCollectionInterface::getElementType
+     * @return string
+     */
+    abstract public function getElementType();
+
+    /**
+     * @see \GenericCollections\Internal\StorageInterface::isEmpty
+     * @return bool
+     */
+    abstract public function isEmpty();
+
+    /**
      * Protected method to do the checks for add and offer methods
      *
      * @param $element
