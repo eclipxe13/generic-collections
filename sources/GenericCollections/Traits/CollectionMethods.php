@@ -11,6 +11,16 @@
  */
 trait CollectionMethods
 {
+    /**
+     * @inheritdoc \GenericCollections\Interfaces\BaseCollectionInterface::add
+     */
+    abstract public function add($element);
+
+    /**
+     * @inheritdoc \GenericCollections\Interfaces\BaseCollectionInterface::contains
+     */
+    abstract public function contains($element);
+
     public function addAll(array $elements)
     {
         $added = false;

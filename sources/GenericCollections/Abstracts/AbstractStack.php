@@ -1,11 +1,11 @@
 <?php namespace GenericCollections\Abstracts;
 
-use GenericCollections\Interfaces\QueueInterface;
+use GenericCollections\Interfaces\StackInterface;
 use GenericCollections\Internal\DataDoubleLinkedList;
 use GenericCollections\Traits\CollectionMethods;
 use GenericCollections\Traits\DequeCommonMethods;
 
-abstract class AbstractStack extends DataDoubleLinkedList implements QueueInterface
+abstract class AbstractStack extends DataDoubleLinkedList implements StackInterface
 {
     use CollectionMethods;
 

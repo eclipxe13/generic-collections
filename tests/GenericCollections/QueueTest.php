@@ -1,5 +1,6 @@
 <?php namespace GenericCollections;
 
+use GenericCollections\Exceptions\GenericCollectionsException;
 use GenericCollections\Interfaces\QueueInterface;
 use GenericCollections\Tests\Samples\Foo;
 
@@ -42,8 +43,8 @@ class QueueTest extends \PHPUnit_Framework_TestCase
 
     public function testAddThrowsAnExceptionThatUsesTheInternalName()
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The queue does not allow null elements');
+        $this->expectException(GenericCollectionsException::class);
+        $this->expectExceptionMessage('The queue ');
         $this->queue->add(null);
     }
 

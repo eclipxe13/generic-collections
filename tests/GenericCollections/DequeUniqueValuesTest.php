@@ -1,6 +1,8 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Deque;
+use GenericCollections\Exceptions\ContainerDoesNotAllowNullException;
+use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
 
@@ -56,8 +58,7 @@ class DequeUniqueValuesTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddDoesNotAllowDuplicatedAndThrowsException($method)
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The deque does not allow duplicated elements');
+        $this->expectException(ContainerNotUniqueMemberException::class);
 
         $this->deque->{$method}($this->sameAsFoo);
     }

@@ -1,5 +1,6 @@
 <?php namespace GenericCollections\Abstracts;
 
+use GenericCollections\Exceptions\ContainerIsEmptyException;
 use GenericCollections\Interfaces\DequeInterface;
 use GenericCollections\Internal\DataDoubleLinkedList;
 use GenericCollections\Traits\CollectionMethods;
@@ -24,7 +25,7 @@ abstract class AbstractDeque extends DataDoubleLinkedList implements DequeInterf
     public function getLast()
     {
         if ($this->isEmpty()) {
-            throw new \LogicException('Can not get an element from an empty ' . $this->containerInternalName());
+            throw new ContainerIsEmptyException($this->containerInternalName(), 'get');
         }
         return $this->storage->top();
     }
@@ -50,7 +51,7 @@ abstract class AbstractDeque extends DataDoubleLinkedList implements DequeInterf
     public function removeLast()
     {
         if ($this->isEmpty()) {
-            throw new \LogicException('Can not remove an element from an empty ' . $this->containerInternalName());
+            throw new ContainerIsEmptyException($this->containerInternalName(), 'remove');
         }
         return $this->storage->pop();
     }

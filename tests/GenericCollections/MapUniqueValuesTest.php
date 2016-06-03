@@ -1,5 +1,6 @@
 <?php namespace GenericCollections\Tests;
 
+use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
 use GenericCollections\Map;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
@@ -30,12 +31,7 @@ class MapUniqueValuesTest extends \PHPUnit_Framework_TestCase
     {
         $foo = new Foo('foo');
         $this->assertNull($this->map->put('foo', $foo));
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp(
-            '/The value provided for (.*)::put is not unique, this map does not allow duplicated values./'
-        );
-        
+        $this->expectException(ContainerNotUniqueMemberException::class);
         $this->assertNull($this->map->put('duplicated', $foo));
     }
 }

@@ -1,5 +1,6 @@
 <?php namespace GenericCollections\Tests\Utils;
 
+use GenericCollections\Exceptions\TypePropertyException;
 use GenericCollections\Utils\TypeProperty;
 
 class TypePropertyTest extends \PHPUnit_Framework_TestCase
@@ -15,16 +16,16 @@ class TypePropertyTest extends \PHPUnit_Framework_TestCase
 
     public function testValueTypeWithEmpty()
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/The type for (.*) is empty/');
+        $this->expectException(TypePropertyException::class);
+        $this->expectExceptionMessage('is empty');
 
         new TypeProperty(null);
     }
 
     public function testValueTypeWithNonString()
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/The type for (.*) is not a string/');
+        $this->expectException(TypePropertyException::class);
+        $this->expectExceptionMessage('is not a string');
 
         new TypeProperty(123);
     }

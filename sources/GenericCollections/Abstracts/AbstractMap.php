@@ -1,6 +1,10 @@
 <?php namespace GenericCollections\Abstracts;
 
 use GenericCollections\Collection;
+use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
+use GenericCollections\Exceptions\InvalidDefaultValueTypeException;
+use GenericCollections\Exceptions\InvalidKeyTypeException;
+use GenericCollections\Exceptions\InvalidValueTypeException;
 use GenericCollections\Interfaces\MapInterface;
 use GenericCollections\Internal\DataArray;
 use GenericCollections\Set;
@@ -28,11 +32,7 @@ abstract class AbstractMap extends DataArray implements MapInterface, \ArrayAcce
             return $this->data[$key];
         }
         if (null !== $default && ! $this->checkValueType($default)) {
-            throw new \InvalidArgumentException(
-                'The default value provided for '
-                . get_class($this) . '::getOrDefault is not a valid type,'
-                . ' expected ' . $this->getKeyType() . '.'
-            );
+            throw new InvalidDefaultValueTypeException('map', $this->getValueType(), get_class($this));
         }
         return $default;
     }
@@ -45,25 +45,13 @@ abstract class AbstractMap extends DataArray implements MapInterface, \ArrayAcce
     public function put($key, $value)
     {
         if (! $this->checkKeyType($key)) {
-            throw new \InvalidArgumentException(
-                'The key provided for ' . get_class($this)
-                . '::put is not a valid type,'
-                . ' expected ' . $this->getKeyType() . '.'
-            );
+            throw new InvalidKeyTypeException('map', $this->getKeyType(), get_class($this));
         }
         if (! $this->checkValueType($value)) {
-            throw new \InvalidArgumentException(
-                'The value provided for ' . get_class($this)
-                . '::put is not a valid type,'
-                . ' expected ' . $this->getValueType() . '.'
-            );
+            throw new InvalidValueTypeException('map', $this->getValueType(), get_class($this));
         }
-        if ($this->optionUniqueValues() and $this->containsValue($value)) {
-            throw new \InvalidArgumentException(
-                'The value provided for ' . get_class($this)
-                . '::put is not unique,'
-                . ' this map does not allow duplicated values.'
-            );
+        if ($this->optionUniqueValues() && $this->containsValue($value)) {
+            throw new ContainerNotUniqueMemberException('map', get_class($this));
         }
         $previous = $this->get($key);
         $this->data[$key] = $value;
@@ -144,7 +132,7 @@ abstract class AbstractMap extends DataArray implements MapInterface, \ArrayAcce
     /*
      * Implementations from \ArrayAccess
      */
-    
+
     /** @inheritdoc */
     public function offsetExists($offset)
     {
