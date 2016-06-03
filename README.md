@@ -33,16 +33,14 @@ class Foos extends Collection
 }
 ```
 
-Or extend the Abstract class, by example:
+## Installation
 
-```php
-class Foos extends AbstractCollection
-{
-    public function getElementType()
-    {
-        return Foo::class;
-    }
-}
+The preferred method of installation is via [Packagist][] and [Composer][]. Run
+the following command to install the package and add it as a requirement to
+your project's `composer.json`:
+
+```bash
+composer require eclipxe/generic-collections
 ```
 
 ## List of classes
@@ -57,9 +55,10 @@ Basic classes:
 Classes that implement `\ArrayAccess`
 
 - [x] Map: A mapping from keys to values.
-- [ ] List: A collection that can be accesed by their integer index and search elements on the list.
+- [ ] List: A collection that can be accessed by their integer index and search elements on the list.
 
 Additional classes:
+
 - [x] Stack: Collection for holding elements (LIFO)
 - [ ] Shape: Structure with typed values
 
@@ -67,7 +66,7 @@ All classes have these additional options:
 
 - allow null elements/values
 - allow only unique elements/values
-- comparison equal: make equality comparisons between members instead of identical comparisons
+- comparison equal (make equality comparisons between members instead of identical comparisons)
 
 ## About
 
@@ -86,7 +85,7 @@ Yes, my mistake, the repository username is `eclipxe13/` and the packagist name 
 This class will be compatible according to [PHP Supported versions](http://php.net/supported-versions.php),
 Security Support. This means that it will offer compatibility with PHP 5.6+ until 2018-12-31.
 
-The support for cersion 5.5+ is not included since this PHP version will end 2016-06-10
+The support for version 5.5+ is not included since this PHP version will end 2016-06-10
 and that is lower than the release of first version of this library.
 
 Not taking particular efforts to make this library compatible with hhvm, hhvm have Generics support included
@@ -97,16 +96,6 @@ ability to use abstracts methods) that are not compatible. Also I've seen a prob
 ## Documentation and examples
 
 WIP. Be patient please.
-
-## Installation
-
-The preferred method of installation is via [Packagist][] and [Composer][]. Run
-the following command to install the package and add it as a requirement to
-your project's `composer.json`:
-
-```bash
-composer require eclipxe/generic-collections
-```
 
 ## Contributing
 
@@ -130,7 +119,7 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [build]: https://travis-ci.org/eclipxe13/generic-collections
 [quality]: https://scrutinizer-ci.com/g/eclipxe13/generic-collections/
 [coverage]: https://coveralls.io/github/eclipxe13/generic-collections?branch=master
-[downloads]: https://packagist.org/packages/eclipxe13/generic-collections
+[downloads]: https://packagist.org/packages/eclipxe/generic-collections
 
 [badge-source]: http://img.shields.io/badge/source-eclipxe13/generic--collections-blue.svg?style=flat-square
 [badge-release]: https://img.shields.io/github/release/eclipxe13/generic-collections.svg?style=flat-square
@@ -138,4 +127,4 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [badge-build]: https://img.shields.io/travis/eclipxe13/generic-collections.svg?style=flat-square
 [badge-quality]: https://img.shields.io/scrutinizer/g/eclipxe13/generic-collections/master.svg?style=flat-square
 [badge-coverage]: https://coveralls.io/repos/github/eclipxe13/generic-collections/badge.svg?branch=master
-[badge-downloads]: https://img.shields.io/packagist/dt/eclipxe13/generic-collections.svg?style=flat-square
+[badge-downloads]: https://img.shields.io/packagist/dt/eclipxe/generic-collections.svg?style=flat-square
