@@ -11,7 +11,7 @@ interface CollectionInterface extends BaseCollectionInterface
     /**
      * Ensures that this collection contains the specified element (optional operation)
      *
-     * Must thow and exception if the element is not a valid type.
+     * Must throw and exception if the element is not a valid type.
      *
      * @param mixed $element
      * @return bool Returns true if this collection changed as a result of the call

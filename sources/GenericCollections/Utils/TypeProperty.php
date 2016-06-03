@@ -70,7 +70,7 @@ class TypeProperty
      * Return the allowed types for this property.
      * Its used for the validations inside the constructor.
      *
-     * To restict to a certain types return the array with the list of types
+     * To restrict to a certain types return the array with the list of types
      *
      * If a non array is returned then any type is allowed
      *

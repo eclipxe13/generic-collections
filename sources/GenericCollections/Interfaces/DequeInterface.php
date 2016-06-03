@@ -33,7 +33,7 @@ interface DequeInterface extends QueueInterface
     /**
      * Inserts the specified element at the front of this deque unless it would violate capacity restrictions.
      *
-     * Return false if a restriction is foundother than the element is not the correct type
+     * Return false if a restriction is found, other than the element is not the correct type
      * or the element is null and the deque does not allow nulls
      *
      * @param mixed $element
@@ -60,7 +60,7 @@ interface DequeInterface extends QueueInterface
     public function getFirst();
 
     /**
-     * Retrieves, but does not remove, the fisrt element of this deque. This method
+     * Retrieves, but does not remove, the first element of this deque. This method
      * differs from peekLast only in that it throws an exception if this deque is empty.
      *
      * @return mixed the last element of this deque

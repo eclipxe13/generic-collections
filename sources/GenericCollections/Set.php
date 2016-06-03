@@ -19,7 +19,7 @@ class Set extends Collection
     /**
      * @param string $elementType
      * @param array $elements
-     * @param int $options Options::COMPARISONISIDENTICAL
+     * @param int $options Options::COMPARISON_EQUAL
      */
     public function __construct($elementType, array $elements = [], $options = Options::UNIQUE_VALUES)
     {
