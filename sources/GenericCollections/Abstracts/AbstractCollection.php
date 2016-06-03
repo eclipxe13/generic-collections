@@ -1,32 +1,27 @@
 <?php namespace GenericCollections\Abstracts;
 
 use GenericCollections\Interfaces\CollectionInterface;
-use GenericCollections\Utils\TypeChecker;
+use GenericCollections\Internal\DataArray;
+use GenericCollections\Traits\CollectionMethods;
 
 /**
  * This is a partial implementation of CollectionInterface
- * The main Collection object extends this class
+ * The main Collection object extends this class but types methods
  *
  * Use this class to implement your own collection class.
  * You will need to implement the getElementType method on your concrete case.
- * You would also want to change the strict/identity behavior, to do so
- * you will need to override internalInArray and internalSearchArray methods.
  *
  * @package GenericCollections\Abstracts
  */
-abstract class AbstractCollection extends InternalDataArray implements CollectionInterface
+abstract class AbstractCollection extends DataArray implements CollectionInterface
 {
-    public function addAll(array $elements)
-    {
-        $added = false;
-        foreach ($elements as $element) {
-            $added = $this->add($element);
-        }
-        return $added;
-    }
-
+    use CollectionMethods;
+    
     public function add($element)
     {
+        if ($this->optionUniqueValues() && $this->contains($element)) {
+            return false;
+        }
         if (! $this->checkElementType($element)) {
             throw new \InvalidArgumentException(
                 'Invalid element type;'
@@ -34,40 +29,18 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
                 . ' was expecting a ' . $this->getElementType() . ' type'
             );
         }
-
         $this->data[] = $element;
-
         return true;
     }
 
     public function contains($element)
     {
-        return in_array($element, $this->data, $this->comparisonMethodIsIdentical());
-    }
-
-    public function containsAll(array $elements)
-    {
-        foreach ($elements as $element) {
-            if (! $this->contains($element)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public function containsAny(array $elements)
-    {
-        foreach ($elements as $element) {
-            if ($this->contains($element)) {
-                return true;
-            }
-        }
-        return false;
+        return in_array($element, $this->data, $this->optionComparisonIsIdentical());
     }
 
     public function remove($element)
     {
-        $index = array_search($element, $this->data, $this->comparisonMethodIsIdentical());
+        $index = array_search($element, $this->data, $this->optionComparisonIsIdentical());
         if (false === $index) {
             return false;
         }
@@ -76,6 +49,21 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
             $this->data = array_values($this->data);
         }
         return true;
+    }
+
+    public function retainAll(array $elements)
+    {
+        $changed = false;
+        foreach ($this->data as $index => $element) {
+            if (! in_array($element, $elements, $this->optionComparisonIsIdentical())) {
+                unset($this->data[$index]);
+                $changed = true;
+            }
+        }
+        if ($changed) {
+            $this->data = array_values($this->data);
+        }
+        return $changed;
     }
 
     public function removeAll(array $elements)
@@ -103,31 +91,5 @@ abstract class AbstractCollection extends InternalDataArray implements Collectio
             }
         }
         return $changed;
-    }
-
-    public function retainAll(array $elements)
-    {
-        $changed = false;
-        foreach ($this->data as $index => $element) {
-            if (! in_array($element, $elements, $this->comparisonMethodIsIdentical())) {
-                unset($this->data[$index]);
-                $changed = true;
-            }
-        }
-        if ($changed) {
-            $this->data = array_values($this->data);
-        }
-        return $changed;
-    }
-
-    /**
-     * Check if an specific element is valid to the collection type
-     *
-     * @param mixed $element
-     * @return bool
-     */
-    public function checkElementType($element)
-    {
-        return TypeChecker::getInstance()->checkType($this->getElementType(), $element);
     }
 }

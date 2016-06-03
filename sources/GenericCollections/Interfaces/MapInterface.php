@@ -1,9 +1,10 @@
 <?php namespace GenericCollections\Interfaces;
 
 use GenericCollections\Collection;
+use GenericCollections\Internal\StorageInterface;
 use GenericCollections\Set;
 
-interface MapInterface extends InternalDataArray
+interface MapInterface extends BaseOptions, StorageInterface
 {
     /**
      * Get the type of the values on the map

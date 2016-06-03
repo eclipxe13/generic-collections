@@ -1,13 +1,21 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
-use GenericCollections\Interfaces\InternalDataArray;
 use GenericCollections\Interfaces\MapInterface;
+use GenericCollections\Internal\StorageInterface;
 use GenericCollections\Map;
 use GenericCollections\Set;
 use GenericCollections\Tests\Samples\Foo;
 
-class MapStrictTest extends \PHPUnit_Framework_TestCase
+/**
+ * Test a Map with default behavior:
+ * - do not allow nulls
+ * - strict comparisons
+ * - allow duplicates
+ *
+ * Other tests must be created for other options
+ */
+class MapDefaultTest extends \PHPUnit_Framework_TestCase
 {
     protected $zero;
     protected $four;
@@ -38,7 +46,7 @@ class MapStrictTest extends \PHPUnit_Framework_TestCase
         $map = new Map('int', 'string');
 
         $this->assertInstanceOf(MapInterface::class, $map);
-        $this->assertInstanceOf(InternalDataArray::class, $map);
+        $this->assertInstanceOf(StorageInterface::class, $map);
 
         $this->assertEquals('int', $map->getKeyType());
         $this->assertEquals('string', $map->getValueType());
@@ -47,7 +55,7 @@ class MapStrictTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([], $map->toArray());
         $this->assertCount(0, $map);
 
-        $this->assertSame(true, $map->comparisonMethodIsIdentical());
+        $this->assertSame(true, $map->optionComparisonIsIdentical());
     }
 
     public function testConstructWithBadKeyType()

@@ -3,13 +3,15 @@
 use GenericCollections\Collection;
 use GenericCollections\Tests\Samples\Foo;
 
-/*
- * This check all methods, assuming that the comparisons
- * inside the collection are identical.
+/**
+ * Test a Collection with default behavior:
+ * - do not allow nulls
+ * - strict comparisons
+ * - allow duplicates
  *
- * The behavior on non identical is on CollectionEqualTest
+ * Other tests must be created for other options
  */
-class CollectionStrictTest extends \PHPUnit_Framework_TestCase
+class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructWithType()
     {
@@ -18,7 +20,9 @@ class CollectionStrictTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('int', $col->getElementType());
         $this->assertInternalType('array', $col->toArray());
         $this->assertEquals([], $col->toArray());
-        $this->assertSame(true, $col->comparisonMethodIsIdentical());
+        $this->assertSame(true, $col->optionComparisonIsIdentical());
+        $this->assertSame(false, $col->optionAllowNullMembers());
+        $this->assertSame(false, $col->optionUniqueValues());
     }
 
     public function testAdd()
@@ -187,6 +191,22 @@ class CollectionStrictTest extends \PHPUnit_Framework_TestCase
         // remove an item
         $this->assertTrue($col->remove($onehundred));
         $this->assertCount(2, $col, 'method remove return true but has the element or remove more than one instance');
+    }
+
+    public function testRemoveChangeIndexes()
+    {
+        $foo = new Foo('foo');
+        $bar = new Foo('bar');
+        $baz = new Foo('baz');
+        $collection = new Collection(Foo::class, [
+            $foo,
+            $bar,
+            $baz,
+        ]);
+
+        $collection->remove($bar);
+        $expectedArray = [$foo, $baz];
+        $this->assertSame($expectedArray, $collection->toArray());
     }
 
 

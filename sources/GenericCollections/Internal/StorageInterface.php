@@ -1,6 +1,11 @@
-<?php namespace GenericCollections\Interfaces;
+<?php namespace GenericCollections\Internal;
 
-interface InternalDataArray extends CompareMethodInterface, \Countable, \IteratorAggregate
+/**
+ * Interface StorageInterface
+ *
+ * @package GenericCollections\Interfaces
+ */
+interface StorageInterface extends \Countable, \IteratorAggregate
 {
     /**
      * Removes all of the elements from this collection (optional operation).

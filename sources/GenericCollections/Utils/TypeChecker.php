@@ -23,26 +23,6 @@ class TypeChecker
     ];
 
     /**
-     * Singleton instance
-     *
-     * @var self
-     */
-    public static $singleton = null;
-
-    /**
-     * Method to implement singleton pattern
-     *
-     * @return self
-     */
-    public static function getInstance()
-    {
-        if (null === static::$singleton) {
-            static::$singleton = new self;
-        }
-        return static::$singleton;
-    }
-
-    /**
      * Check if a value match with an specific type
      *
      * @param string $type

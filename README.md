@@ -36,7 +36,7 @@ class Foos extends Collection
 Or extend the Abstract class, by example:
 
 ```php
-class Foos extends AbstractCollectionStrict
+class Foos extends AbstractCollection
 {
     public function getElementType()
     {
@@ -50,12 +50,24 @@ class Foos extends AbstractCollectionStrict
 Basic classes:
 
 - [x] Collection: A collection represents a group of elements of the same type.
-- [x] Set: A collection that does not allow repeated elements
+- [x] Set: A collection that only allows unique elements
+- [x] Queue: Collection for holding elements (FIFO)
+- [x] Deque: Double Ended Queue
 
 Classes that implement `\ArrayAccess`
 
 - [x] Map: A mapping from keys to values.
 - [ ] List: A collection that can be accesed by their integer index and search elements on the list.
+
+Additional classes:
+- [x] Stack: Collection for holding elements (LIFO)
+- [ ] Shape: Structure with typed values
+
+All classes have these additional options:
+
+- allow null elements/values
+- allow only unique elements/values
+- comparison equal: make equality comparisons between members instead of identical comparisons
 
 ## About
 
@@ -76,6 +88,11 @@ Security Support. This means that it will offer compatibility with PHP 5.6+ unti
 
 The support for cersion 5.5+ is not included since this PHP version will end 2016-06-10
 and that is lower than the release of first version of this library.
+
+Not taking particular efforts to make this library compatible with hhvm, hhvm have Generics support included
+and also has a collection library. I have seen differences on how hack language implement traits (like the
+ability to use abstracts methods) that are not compatible. Also I've seen a problem on hhvm 3.6.6
+(the one is using Travis CI)implementation of `SplDoubleLinkedList` that are not present on version 3.12.1.
 
 ## Documentation and examples
 

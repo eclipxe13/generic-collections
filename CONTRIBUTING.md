@@ -64,6 +64,6 @@ it will result in a complete build failure. Before you can run these, be sure to
 
 ```
 ./vendor/bin/parallel-lint sources tests
-./vendor/bin/phpcs sources tests --standard=psr2 -sp
+./vendor/bin/phpcs sources tests --encoding=utf-8 --standard=psr2 -sp
 ./vendor/bin/phpunit --coverage-text
 ```
