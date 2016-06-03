@@ -1,6 +1,9 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Deque;
+use GenericCollections\Exceptions\ContainerDoesNotAllowNullException;
+use GenericCollections\Exceptions\ContainerIsEmptyException;
+use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Interfaces\DequeInterface;
 use GenericCollections\Tests\Samples\Foo;
 
@@ -91,9 +94,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
      */
     public function testDequeDoNotAllowNulls($method)
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The deque does not allow null elements');
-
+        $this->expectException(ContainerDoesNotAllowNullException::class);
         $this->deque->{$method}(null);
     }
 
@@ -103,9 +104,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
      */
     public function testDequeThrowsExceptionOnInvalidType($method)
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Invalid element type; the deque (.*) was expecting a (.*) type/');
-
+        $this->expectException(InvalidElementTypeException::class);
         $this->deque->{$method}(new \stdClass());
     }
 
@@ -202,30 +201,25 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(2, $this->deque);
     }
 
-    public function testGetFirstThrowExceptionWhenEmpty()
+    public function providerGetMethods()
     {
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Can not get an element from an empty deque');
-        $this->deque->getFirst();
+        return [['element'], ['getFirst'], ['getLast']];
     }
 
-    public function testGetLastThrowExceptionWhenEmpty()
+    /**
+     * @param $method
+     * @dataProvider providerGetMethods
+     */
+    public function testGetThrowExceptionWhenEmpty($method)
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(ContainerIsEmptyException::class);
         $this->expectExceptionMessage('Can not get an element from an empty deque');
-        $this->deque->getLast();
-    }
-
-    public function testElementThrowExceptionWhenEmpty()
-    {
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Can not get an element from an empty deque');
-        $this->deque->element();
+        $this->deque->{$method}();
     }
 
     public function testPeekFirst()
     {
-        $this->assertNull($this->deque->peekFirst());
+        $this->assertNull($this->deque->peekFirst(), 'peekFirst must return null when empty');
         $this->populateDeque();
         $this->assertSame($this->first, $this->deque->peekFirst());
         $this->assertCount(2, $this->deque);
@@ -233,7 +227,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testPeekLast()
     {
-        $this->assertNull($this->deque->peekLast());
+        $this->assertNull($this->deque->peekLast(), 'peekLast must return null when empty');
         $this->populateDeque();
         $this->assertSame($this->second, $this->deque->peekLast());
         $this->assertCount(2, $this->deque);
@@ -241,7 +235,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testPeek()
     {
-        $this->assertNull($this->deque->peek());
+        $this->assertNull($this->deque->peek(), 'peek must return null when empty');
         $this->populateDeque();
         $this->assertSame($this->first, $this->deque->peek());
         $this->assertCount(2, $this->deque);
@@ -268,30 +262,26 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
         $this->assertSame([$this->second], $this->deque->toArray());
     }
 
-    public function testRemoveFirstThrowExceptionWhenEmpty()
+    public function providerRemoveMethods()
     {
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Can not remove an element from an empty deque');
-        $this->deque->removeFirst();
+        return [['remove'], ['removeFirst'], ['removeLast']];
     }
 
-    public function testRemoveLastThrowExceptionWhenEmpty()
+    /**
+     * @param string $method
+     * @dataProvider providerRemoveMethods
+     */
+    public function testRemoveThrowExceptionWhenEmpty($method)
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(ContainerIsEmptyException::class);
         $this->expectExceptionMessage('Can not remove an element from an empty deque');
-        $this->deque->removeLast();
-    }
 
-    public function testRemoveThrowExceptionWhenEmpty()
-    {
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Can not remove an element from an empty deque');
-        $this->deque->remove();
+        $this->deque->{$method}();
     }
 
     public function testPollFirst()
     {
-        $this->assertNull($this->deque->pollFirst());
+        $this->assertNull($this->deque->pollFirst(), 'pollFirst must return null when empty');
         $this->populateDeque();
         $this->assertSame($this->first, $this->deque->pollFirst());
         $this->assertSame([$this->second], $this->deque->toArray());
@@ -299,7 +289,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testPollLast()
     {
-        $this->assertNull($this->deque->pollLast());
+        $this->assertNull($this->deque->pollLast(), 'pollLast must return null when empty');
         $this->populateDeque();
         $this->assertSame($this->second, $this->deque->pollLast());
         $this->assertSame([$this->first], $this->deque->toArray());
@@ -307,7 +297,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testPoll()
     {
-        $this->assertNull($this->deque->poll());
+        $this->assertNull($this->deque->poll(), 'poll must return null when empty');
         $this->populateDeque();
         $this->assertSame($this->first, $this->deque->poll());
         $this->assertSame([$this->second], $this->deque->toArray());
@@ -315,6 +305,8 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testContains()
     {
+        $this->assertFalse($this->deque->contains(0), 'contains on an empty container must return false');
+
         $this->populateDeque();
 
         $this->assertTrue($this->deque->contains($this->first));

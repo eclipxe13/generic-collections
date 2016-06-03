@@ -1,6 +1,10 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
+use GenericCollections\Exceptions\InvalidDefaultValueTypeException;
+use GenericCollections\Exceptions\InvalidKeyTypeException;
+use GenericCollections\Exceptions\InvalidValueTypeException;
+use GenericCollections\Exceptions\TypePropertyException;
 use GenericCollections\Interfaces\MapInterface;
 use GenericCollections\Internal\StorageInterface;
 use GenericCollections\Map;
@@ -60,10 +64,10 @@ class MapDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructWithBadKeyType()
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/The type (.*) for (.*) is not a allowed/');
+        $this->expectException(TypePropertyException::class);
+        $this->expectExceptionMessageRegExp('/The type (.*) is not allowed/');
 
-        new Map(Foo::class, 'int');
+        new Map(\stdClass::class, 'int');
     }
 
     public function testPut()
@@ -87,10 +91,7 @@ class MapDefaultTest extends \PHPUnit_Framework_TestCase
     {
         $map = new Map('string', Foo::class);
 
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp(
-            '/The key provided for (.*)::put is not a valid type, expected (.*)./'
-        );
+        $this->expectException(InvalidKeyTypeException::class);
 
         $this->assertNull($map->put(1, new Foo(0)));
     }
@@ -99,10 +100,7 @@ class MapDefaultTest extends \PHPUnit_Framework_TestCase
     {
         $map = new Map('string', Foo::class);
 
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp(
-            '/The value provided for (.*)::put is not a valid type, expected (.*)./'
-        );
+        $this->expectException(InvalidValueTypeException::class);
 
         $map->put('foo', null);
     }
@@ -211,10 +209,8 @@ class MapDefaultTest extends \PHPUnit_Framework_TestCase
         // allow return null for default
         $this->assertNull($map->getOrDefault('non-existent', null));
 
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp(
-            '/The default value provided for (.*)::getOrDefault is not a valid type, expected (.*)./'
-        );
+        // receive an exception for invalid type
+        $this->expectException(InvalidDefaultValueTypeException::class);
         $map->getOrDefault('non-existent', new \stdClass());
     }
 

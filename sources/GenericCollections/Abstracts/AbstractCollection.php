@@ -1,5 +1,6 @@
 <?php namespace GenericCollections\Abstracts;
 
+use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Interfaces\CollectionInterface;
 use GenericCollections\Internal\DataArray;
 use GenericCollections\Traits\CollectionMethods;
@@ -23,11 +24,7 @@ abstract class AbstractCollection extends DataArray implements CollectionInterfa
             return false;
         }
         if (! $this->checkElementType($element)) {
-            throw new \InvalidArgumentException(
-                'Invalid element type;'
-                . ' the collection ' . get_class($this)
-                . ' was expecting a ' . $this->getElementType() . ' type'
-            );
+            throw new InvalidElementTypeException('collection', $this->getElementType(), get_class($this));
         }
         $this->data[] = $element;
         return true;

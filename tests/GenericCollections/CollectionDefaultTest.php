@@ -1,6 +1,7 @@
 <?php namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
+use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Tests\Samples\Foo;
 
 /**
@@ -35,10 +36,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
     public function testAddWithWrongType()
     {
         $col = new Collection("int");
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Invalid element type; the collection (.*) was expecting a (.*) type/');
-
+        $this->expectException(InvalidElementTypeException::class);
         $this->assertTrue($col->add('foo'));
     }
 

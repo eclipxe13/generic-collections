@@ -1,5 +1,6 @@
 <?php namespace GenericCollections\Tests;
 
+use GenericCollections\Exceptions\InvalidValueTypeException;
 use GenericCollections\Map;
 use GenericCollections\Tests\Samples\Foo;
 
@@ -59,7 +60,7 @@ class MapArrayAccessTest extends \PHPUnit_Framework_TestCase
 
     public function testOffsetSetWithException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidValueTypeException::class);
         $this->map['ex'] = 'Exception';
     }
 

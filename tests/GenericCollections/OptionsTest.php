@@ -1,5 +1,7 @@
 <?php namespace GenericCollections;
 
+use GenericCollections\Exceptions\OptionsException;
+
 class OptionsTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructor()
@@ -14,8 +16,7 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorWithError()
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The supplied options value is not an integer');
+        $this->expectException(OptionsException::class);
         new Options('4');
     }
 

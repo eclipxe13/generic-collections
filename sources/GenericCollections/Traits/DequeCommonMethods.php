@@ -1,5 +1,9 @@
 <?php namespace GenericCollections\Traits;
 
+use GenericCollections\Exceptions\ContainerIsEmptyException;
+use GenericCollections\Exceptions\ContainerDoesNotAllowNullException;
+use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
+use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Internal\DoubleLinkedList;
 
 /**
@@ -22,7 +26,7 @@ trait DequeCommonMethods
      * @return bool
      */
     abstract public function optionAllowNullMembers();
-    
+
     /**
      * @see \GenericCollections\Interfaces\BaseOptions::optionUniqueValues
      * @return bool
@@ -41,7 +45,7 @@ trait DequeCommonMethods
      * @return bool
      */
     abstract public function checkElementType($element);
-    
+
     /**
      * @see \GenericCollections\Interfaces\BaseCollectionInterface::getElementType
      * @return string
@@ -55,54 +59,66 @@ trait DequeCommonMethods
     abstract public function isEmpty();
 
     /**
-     * Protected method to do the checks for add and offer methods
+     * Throw an exception when add a non valid element
      *
      * @param $element
-     * @return string The reason why this would produce an error
      */
-    private function checkAddOffer($element)
+    private function checkElementAdd($element)
     {
         // always throw an exception if element is null and container does not allow nulls
         if (! $this->optionAllowNullMembers() && is_null($element)) {
-            throw new \InvalidArgumentException(
-                'The ' . $this->containerInternalName() . ' does not allow null elements'
+            throw new ContainerDoesNotAllowNullException(
+                $this->containerInternalName(),
+                get_class($this)
             );
         }
         // always throw an exception if element is not the correct type
         if (! $this->checkElementType($element)) {
-            throw new \InvalidArgumentException(
-                'Invalid element type;'
-                . ' the ' . $this->containerInternalName() . ' ' . get_class($this)
-                . ' was expecting a ' . $this->getElementType() . ' type'
+            throw new InvalidElementTypeException(
+                $this->containerInternalName(),
+                $this->getElementType(),
+                get_class($this)
             );
         }
-        // return the error message, add will throw an exception, offer will return false
         if ($this->optionUniqueValues() && $this->contains($element)) {
-            return 'The ' . $this->containerInternalName() . ' does not allow duplicated elements';
+            throw new ContainerNotUniqueMemberException(
+                $this->containerInternalName(),
+                get_class($this)
+            );
         }
-        // no error found
-        return '';
+    }
+
+    /**
+     * Throw an exception when add a non valid element
+     *
+     * @param $element
+     * @return bool
+     */
+    private function checkElementOffer($element)
+    {
+        try {
+            $this->checkElementAdd($element);
+        } catch (ContainerNotUniqueMemberException $ex) {
+            return false;
+        }
+        return true;
     }
 
     public function addFirst($element)
     {
-        if ('' !== $errorMessage = $this->checkAddOffer($element)) {
-            throw new \InvalidArgumentException($errorMessage);
-        }
+        $this->checkElementAdd($element);
         $this->storage->unshift($element);
     }
 
     public function addLast($element)
     {
-        if ('' !== $errorMessage = $this->checkAddOffer($element)) {
-            throw new \InvalidArgumentException($errorMessage);
-        }
+        $this->checkElementAdd($element);
         $this->storage->push($element);
     }
 
     public function offerFirst($element)
     {
-        if ('' !== $this->checkAddOffer($element)) {
+        if (! $this->checkElementOffer($element)) {
             return false;
         }
         $this->storage->unshift($element);
@@ -111,7 +127,7 @@ trait DequeCommonMethods
 
     public function offerLast($element)
     {
-        if ('' !== $this->checkAddOffer($element)) {
+        if (! $this->checkElementOffer($element)) {
             return false;
         }
         $this->storage->push($element);
@@ -121,7 +137,7 @@ trait DequeCommonMethods
     public function getFirst()
     {
         if ($this->isEmpty()) {
-            throw new \LogicException('Can not get an element from an empty ' . $this->containerInternalName());
+            throw new ContainerIsEmptyException($this->containerInternalName(), 'get');
         }
         return $this->storage->bottom();
     }
@@ -137,7 +153,7 @@ trait DequeCommonMethods
     public function removeFirst()
     {
         if ($this->isEmpty()) {
-            throw new \LogicException('Can not remove an element from an empty ' . $this->containerInternalName());
+            throw new ContainerIsEmptyException($this->containerInternalName(), 'remove');
         }
         return $this->storage->shift();
     }

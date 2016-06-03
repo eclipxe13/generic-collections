@@ -1,5 +1,6 @@
 <?php namespace GenericCollections;
 
+use GenericCollections\Exceptions\OptionsException;
 use GenericCollections\Interfaces\BaseOptions;
 
 /**
@@ -35,7 +36,7 @@ class Options implements BaseOptions
     public function __construct($options)
     {
         if (!is_integer($options)) {
-            throw new \InvalidArgumentException('The supplied options value is not an integer');
+            throw new OptionsException('The supplied options value is not an integer');
         }
         $options                     = $options & 7; // truncate to max value (3 ^ 2 - 1)
         $this->options               = $options;
