@@ -39,15 +39,15 @@ class TypeProperty
     {
         // type checks
         if (empty($type)) {
-            $this->throwConstructorException('is empty');
+            throw $this->newConstructorException('is empty');
         }
         if (!is_string($type)) {
-            $this->throwConstructorException('is not a string');
+            throw $this->newConstructorException('is not a string');
         }
         // allowed types
         $allowed = $this->getAllowedTypes();
         if (is_array($allowed) && count($allowed) && ! in_array($type, $allowed, true)) {
-            $this->throwConstructorException('is not allowed', $type);
+            throw $this->newConstructorException('is not allowed', $type);
         }
         // object initiation
         $this->checker = new TypeChecker();
@@ -60,11 +60,12 @@ class TypeProperty
      *
      * @param string $reason
      * @param string $type
+     * @return TypePropertyException
      */
-    private function throwConstructorException($reason, $type = '')
+    private function newConstructorException($reason, $type = '')
     {
         $type = ('' !== $type) ? " '" . $type . "'" : "";
-        throw new TypePropertyException('The type' . $type . ' for ' . get_class($this) . ' ' . $reason);
+        return new TypePropertyException('The type' . $type . ' for ' . get_class($this) . ' ' . $reason);
     }
 
     /**
