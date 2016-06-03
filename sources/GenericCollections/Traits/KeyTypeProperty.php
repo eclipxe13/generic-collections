@@ -6,8 +6,6 @@ use GenericCollections\Utils\TypeProperty;
  * Trait KeyTypeProperty.
  * Used in: Maps
  *
- * @mixin \GenericCollections\Map
- *
  * @package GenericCollections\Traits
  */
 trait KeyTypeProperty

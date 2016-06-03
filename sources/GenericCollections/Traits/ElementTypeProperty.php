@@ -6,8 +6,6 @@ use GenericCollections\Utils\TypeProperty;
  * Trait ElementTypeProperty.
  * used in Collections and Map (renaming element to value)
  *
- * @mixin \GenericCollections\Collection
- *
  * @package GenericCollections\Traits
  */
 trait ElementTypeProperty

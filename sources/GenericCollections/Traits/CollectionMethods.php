@@ -7,8 +7,6 @@
  *
  * This methods are declared to avoid warnings
  *
- * @mixin \GenericCollections\Abstracts\AbstractCollection
- *
  * @package GenericCollections\Traits
  */
 trait CollectionMethods

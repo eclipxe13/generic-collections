@@ -1,13 +1,11 @@
-<?php
-
-namespace GenericCollections\Traits;
+<?php namespace GenericCollections\Traits;
 
 use GenericCollections\Internal\DoubleLinkedList;
 
 /**
  * This trait include all deque standard methods to queue, stack and deque
  *
- * @mixin \GenericCollections\Abstracts\AbstractDeque
+ * @property DoubleLinkedList $storage
  *
  * @package GenericCollections\Traits
  */
