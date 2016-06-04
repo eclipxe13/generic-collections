@@ -1,10 +1,8 @@
 <?php namespace GenericCollections\Traits;
 
-use GenericCollections\Options;
-
 /**
  * Class OptionsProperty
- * used in almost every first level class
+ * Used in almost every first level class
  *
  * @package GenericCollections\Traits
  */
@@ -12,7 +10,7 @@ trait OptionsProperty
 {
     /**
      * Options object
-     * @var Options
+     * @var \GenericCollections\Options
      */
     private $options;
 
