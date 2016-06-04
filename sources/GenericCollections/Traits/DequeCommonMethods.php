@@ -22,19 +22,19 @@ trait DequeCommonMethods
     abstract protected function containerInternalName();
 
     /**
-     * @see \GenericCollections\Interfaces\BaseOptions::optionAllowNullMembers
+     * @see \GenericCollections\Interfaces\BaseOptionsInterface::optionAllowNullMembers
      * @return bool
      */
     abstract public function optionAllowNullMembers();
 
     /**
-     * @see \GenericCollections\Interfaces\BaseOptions::optionUniqueValues
+     * @see \GenericCollections\Interfaces\BaseOptionsInterface::optionUniqueValues
      * @return bool
      */
     abstract public function optionUniqueValues();
 
     /**
-     * @see \GenericCollections\Interfaces\BaseOptions::optionComparisonIsIdentical
+     * @see \GenericCollections\Interfaces\BaseOptionsInterface::optionComparisonIsIdentical
      * @return bool
      */
     abstract public function optionComparisonIsIdentical();

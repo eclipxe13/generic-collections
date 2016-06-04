@@ -1,16 +1,16 @@
 <?php namespace GenericCollections;
 
 use GenericCollections\Exceptions\OptionsException;
-use GenericCollections\Interfaces\BaseOptions;
+use GenericCollections\Interfaces\BaseOptionsInterface;
 
 /**
- * This class implements the BaseOptions interface
+ * This class implements the BaseOptionsInterface
  *
  * Is a ValueObject (read-only) that defines the the container behavior
  *
  * @package GenericCollections
  */
-class Options implements BaseOptions
+class Options implements BaseOptionsInterface
 {
     const UNIQUE_VALUES    = 1;
     const ALLOW_NULLS      = 2;

@@ -1,6 +1,6 @@
 <?php namespace GenericCollections\Interfaces;
 
-interface BaseOptions
+interface BaseOptionsInterface
 {
     /**
      * Defines if the container allow null members
