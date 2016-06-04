@@ -12,10 +12,6 @@ use GenericCollections\Interfaces\BaseOptionsInterface;
  */
 class Options implements BaseOptionsInterface
 {
-    const UNIQUE_VALUES    = 1;
-    const ALLOW_NULLS      = 2;
-    const COMPARISON_EQUAL = 4;
-
     /** @var bool null members property */
     private $allowNullMembers;
 
