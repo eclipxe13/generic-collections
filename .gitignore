@@ -1,6 +1,5 @@
 # do not include this files on git
 /docs
-/.idea
 /vendor
 /composer.lock
 /build
