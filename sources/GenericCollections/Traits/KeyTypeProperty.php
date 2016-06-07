@@ -1,7 +1,5 @@
 <?php namespace GenericCollections\Traits;
 
-use GenericCollections\Utils\TypeProperty;
-
 /**
  * Trait KeyTypeProperty.
  * Used in: Maps
@@ -11,7 +9,7 @@ use GenericCollections\Utils\TypeProperty;
 trait KeyTypeProperty
 {
     /**
-     * @var TypeProperty
+     * @var \GenericCollections\Utils\TypeProperty
      */
     private $keyType;
     

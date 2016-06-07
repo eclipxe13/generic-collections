@@ -4,7 +4,7 @@ use GenericCollections\Collection;
 use GenericCollections\Internal\StorageInterface;
 use GenericCollections\Set;
 
-interface MapInterface extends BaseOptions, StorageInterface
+interface MapInterface extends BaseOptionsInterface, StorageInterface
 {
     /**
      * Get the type of the values on the map

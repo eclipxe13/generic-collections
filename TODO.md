@@ -45,7 +45,7 @@ Also see Hack Shape <https://docs.hhvm.com/hack/overview/collections#what-are-sh
 
 ### Specialized maps: IntegerKeysMap, StringKeysMap, HashMap
 
-As php only allows this type of keys in the array, could be possible to imlement this two
+As php only allows this type of keys in the array, it could be possible to implement this two
 specific cases.
 
 What to do with other objects? what about a HashMap where the key is calculated
@@ -57,7 +57,7 @@ themselves.
 ```php
 // let say that $map is a SelfIdentifiedMap
 // where the key is supplied by Foo::id()
-// and $foo->id returns 1
+// and $foo->id() returns 1
 
 $map[] = $foo; // ok, its like $map[$foo->id()] = $foo
 $map[1] = $foo; // ok, since $foo->id() === 1
@@ -69,8 +69,8 @@ $map[2] = $foo; // must throw an exception
 ## Core Development
 
 - [x] Implement \ArrayAccess interface on Map
+- [x] Build more test on Deque, Queue and Stack (100% coverage)
 - [ ] Document GenericCollections\Abstracts\AbstractCollection
-- [ ] Build more test on Deque, Queue and Stack (100% coverage)
 
 ## Project
 
@@ -82,5 +82,6 @@ $map[2] = $foo; // must throw an exception
 ## Integration
 
 - [X] Include dependences instead of installing by Travis CI
-- [ ] Travis CI fails on phpunit on hhvm 3.6.6, remove and pop does not remove the last element.
+- [X] Travis CI fails on phpunit on hhvm 3.6.6, remove and pop does not remove the last element.
       I'm testing using hhvm 3.12.1 without any issue.
+- [X] Include SensioLabs

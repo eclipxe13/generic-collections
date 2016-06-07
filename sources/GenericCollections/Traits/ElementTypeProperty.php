@@ -1,17 +1,15 @@
 <?php namespace GenericCollections\Traits;
 
-use GenericCollections\Utils\TypeProperty;
-
 /**
  * Trait ElementTypeProperty.
- * used in Collections and Map (renaming element to value)
+ * Used in Collections and Map (renaming element to value)
  *
  * @package GenericCollections\Traits
  */
 trait ElementTypeProperty
 {
     /**
-     * @var TypeProperty
+     * @var \GenericCollections\Utils\TypeProperty
      */
     private $elementType;
 

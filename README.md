@@ -5,6 +5,7 @@
 [![Software License][badge-license]][license]
 [![Build Status][badge-build]][build]
 [![Scrutinizer][badge-quality]][quality]
+[![SensioLabsInsight][badge-sensiolabs]][sensiolabs]
 [![Coverage Status][badge-coverage]][coverage]
 [![Total Downloads][badge-downloads]][downloads]
 
@@ -118,6 +119,7 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [license]: https://github.com/eclipxe13/generic-collections/blob/master/LICENSE
 [build]: https://travis-ci.org/eclipxe13/generic-collections
 [quality]: https://scrutinizer-ci.com/g/eclipxe13/generic-collections/
+[sensiolabs]: https://insight.sensiolabs.com/projects/eeb7099d-e35d-4acb-8ce2-457004a47913
 [coverage]: https://coveralls.io/github/eclipxe13/generic-collections?branch=master
 [downloads]: https://packagist.org/packages/eclipxe/generic-collections
 
@@ -126,5 +128,6 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [badge-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [badge-build]: https://img.shields.io/travis/eclipxe13/generic-collections.svg?style=flat-square
 [badge-quality]: https://img.shields.io/scrutinizer/g/eclipxe13/generic-collections/master.svg?style=flat-square
+[badge-sensiolabs]: https://img.shields.io/sensiolabs/i/eeb7099d-e35d-4acb-8ce2-457004a47913.svg?style=flat-square
 [badge-coverage]: https://coveralls.io/repos/github/eclipxe13/generic-collections/badge.svg?branch=master
 [badge-downloads]: https://img.shields.io/packagist/dt/eclipxe/generic-collections.svg?style=flat-square

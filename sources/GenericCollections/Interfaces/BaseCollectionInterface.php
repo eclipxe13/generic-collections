@@ -13,7 +13,7 @@ use GenericCollections\Internal\StorageInterface;
  *
  * @package GenericCollections\Interfaces
  */
-interface BaseCollectionInterface extends BaseOptions, StorageInterface
+interface BaseCollectionInterface extends BaseOptionsInterface, StorageInterface
 {
     /**
      * Ensures that this collection contains the specified element (optional operation)
