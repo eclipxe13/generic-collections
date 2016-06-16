@@ -106,7 +106,7 @@ interface DequeInterface extends QueueInterface
      * @return mixed|null the removed element, or null if this deque is empty
      */
     public function pollFirst();
-    
+
     /**
      * Retrieves and removes the last element of this deque, or returns null
      * if this deque is empty.

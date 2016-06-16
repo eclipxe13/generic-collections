@@ -12,7 +12,7 @@ trait KeyTypeProperty
      * @var \GenericCollections\Utils\TypeProperty
      */
     private $keyType;
-    
+
     public function getKeyType()
     {
         return (string) $this->keyType;

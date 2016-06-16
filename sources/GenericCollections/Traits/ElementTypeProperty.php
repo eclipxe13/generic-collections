@@ -17,7 +17,7 @@ trait ElementTypeProperty
     {
         return (string) $this->elementType;
     }
-    
+
     public function checkElementType($element)
     {
         return $this->elementType->check($element);

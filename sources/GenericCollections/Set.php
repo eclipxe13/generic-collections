@@ -12,10 +12,8 @@
  *
  * @package GenericCollections
  */
-
 class Set extends Collection
 {
-
     /**
      * @param string $elementType
      * @param array $elements

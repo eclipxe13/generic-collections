@@ -13,12 +13,11 @@
  */
 abstract class AbstractInvalidTypeException extends GenericCollectionsException
 {
-
     /**
      * This property define the name of the property
      * @var string
      */
-    protected $propertyName = "";
+    protected $propertyName = '';
 
     /**
      * Invalid Property Type

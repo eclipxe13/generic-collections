@@ -41,7 +41,7 @@ class TypeProperty
         if (empty($type)) {
             throw $this->newConstructorException('is empty');
         }
-        if (!is_string($type)) {
+        if (! is_string($type)) {
             throw $this->newConstructorException('is not a string');
         }
         // allowed types
@@ -64,7 +64,7 @@ class TypeProperty
      */
     private function newConstructorException($reason, $type = '')
     {
-        $type = ('' !== $type) ? " '" . $type . "'" : "";
+        $type = ('' !== $type) ? " '" . $type . "'" : '';
         return new TypePropertyException('The type' . $type . ' for ' . get_class($this) . ' ' . $reason);
     }
 

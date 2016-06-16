@@ -17,7 +17,7 @@ interface CollectionInterface extends BaseCollectionInterface
      * @return bool Returns true if this collection changed as a result of the call
      */
     public function add($element);
-    
+
     /**
      * Removes a single instance of the specified element from this collection,
      * if it is present (optional operation).

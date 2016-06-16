@@ -31,7 +31,7 @@ class Options implements BaseOptionsInterface
      */
     public function __construct($options)
     {
-        if (!is_integer($options)) {
+        if (! is_integer($options)) {
             throw new OptionsException('The supplied options value is not an integer');
         }
         $options                     = $options & 7; // truncate to max value (3 ^ 2 - 1)

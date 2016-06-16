@@ -1,7 +1,7 @@
 <?php namespace GenericCollections\Traits;
 
-use GenericCollections\Exceptions\ContainerIsEmptyException;
 use GenericCollections\Exceptions\ContainerDoesNotAllowNullException;
+use GenericCollections\Exceptions\ContainerIsEmptyException;
 use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
 use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Internal\DoubleLinkedList;

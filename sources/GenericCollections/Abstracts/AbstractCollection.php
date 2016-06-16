@@ -17,7 +17,7 @@ use GenericCollections\Traits\CollectionMethods;
 abstract class AbstractCollection extends DataArray implements CollectionInterface
 {
     use CollectionMethods;
-    
+
     public function add($element)
     {
         if ($this->optionUniqueValues() && $this->contains($element)) {

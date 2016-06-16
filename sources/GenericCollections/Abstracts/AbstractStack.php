@@ -25,7 +25,7 @@ abstract class AbstractStack extends DataDoubleLinkedList implements StackInterf
         $this->addFirst($element);
         return true;
     }
-    
+
     protected function containerInternalName()
     {
         return 'stack';

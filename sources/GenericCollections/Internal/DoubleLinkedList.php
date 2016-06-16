@@ -32,12 +32,11 @@ class DoubleLinkedList extends \SplDoublyLinkedList
     {
         $this->strict = false;
     }
-    
+
     public function getStrictComparison()
     {
         return $this->strict;
     }
-
 
     /**
      * Returns TRUE if the element exist in the storage

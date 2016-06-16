@@ -4,8 +4,8 @@ use GenericCollections\Abstracts\AbstractMap;
 use GenericCollections\Traits\ElementTypeProperty;
 use GenericCollections\Traits\KeyTypeProperty;
 use GenericCollections\Traits\OptionsProperty;
-use GenericCollections\Utils\TypeProperty;
 use GenericCollections\Utils\TypeKeyProperty;
+use GenericCollections\Utils\TypeProperty;
 
 class Map extends AbstractMap
 {
