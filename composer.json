@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GenericCollections\\": "sources/GenericCollections/"
+            "GenericCollections\\": "src/GenericCollections/"
         }
     },
     "autoload-dev": {
