@@ -14,14 +14,14 @@ By participating in this project and its community, you are expected to uphold t
 
 You can find help and discussion in the following places:
 
-* GitHub Issues: <https://github.com/ramsey/collection/issues>
-* Wiki: <https://github.com/ramsey/collection/wiki>
+* GitHub Issues: <https://github.com/eclipxe13/generic-collections/issues>
 
 ## Reporting Bugs
 
-Bugs are tracked in our project's [issue tracker](https://github.com/ramsey/collection/issues).
+Bugs are tracked in our project's [issue tracker](https://github.com/eclipxe13/generic-collections/issues).
 
-When submitting a bug report, please include enough information for us to reproduce the bug. A good bug report includes the following sections:
+When submitting a bug report, please include enough information for us to reproduce the bug.
+A good bug report includes the following sections:
 
 * Expected outcome
 * Actual outcome
@@ -38,23 +38,23 @@ If you see a bug report that you'd like to fix, please feel free to do so. Follo
 
 ## Adding New Features
 
-If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/ramsey/collection/issues) or active [pull requests](https://github.com/ramsey/collection/pulls) first to see if the feature is already being worked on. If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you from doing a lot of development work only to have your feature rejected. We don't enjoy rejecting your hard work, but some features just don't fit with the goals of the project.
+If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/eclipxe13/generic-collections/issues) or active [pull requests](https://github.com/eclipxe13/generic-collections/pulls) first to see if the feature is already being worked on. If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you from doing a lot of development work only to have your feature rejected. We don't enjoy rejecting your hard work, but some features just don't fit with the goals of the project.
 
 When you do begin working on your feature, here are some guidelines to consider:
 
 * Your pull request description should clearly detail the changes you have made.
-* We following the **[PSR-2 coding standard](http://www.php-fig.org/psr/psr-2/)**. Please ensure your code does, too.
+* We following by minimum the **[PSR-2 coding standard](http://www.php-fig.org/psr/psr-2/)**. Please ensure your code does, too.
 * Please **write tests** for any new features you add.
 * Please **ensure that tests pass** before submitting your pull request. We have Travis CI automatically running tests for pull requests. However, running the tests locally will help save time.
 * **Use topic/feature branches.** Please do not ask us to pull from your master branch.
 * **Submit one feature per pull request.** If you have multiple features you wish to submit, please break them up into separate pull requests.
 * **Send coherent history**. Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
 
-If you are having issues with PSR-2 try to use `phpcbf`
+If you are having issues with coding standars use `php-cs-fixer` and `phpcbf`
 
 ```bash
-# fix sources and tests
-vendor/bin/phpcbf --standard=psr2 --encoding=utf-8 sources/ tests/
+vendor/bin/php-cs-fixer fix -v
+vendor/bin/phpcbf sources/ tests/
 ```
 
 ## Running Tests
@@ -63,7 +63,7 @@ The following tests must pass before we will accept a pull request. If any of th
 it will result in a complete build failure. Before you can run these, be sure to `composer install`.
 
 ```
-./vendor/bin/parallel-lint sources tests
-./vendor/bin/phpcs sources tests --encoding=utf-8 --standard=psr2 -sp
-./vendor/bin/phpunit --coverage-text
+vendor/bin/parallel-lint sources/ tests/
+vendor/bin/phpcs sources/ tests/
+vendor/bin/phpunit --coverage-text
 ```
