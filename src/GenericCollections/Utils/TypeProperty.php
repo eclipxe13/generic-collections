@@ -66,7 +66,7 @@ class TypeProperty
     private function newConstructorException($reason, $type = '')
     {
         $type = ('' !== $type) ? " '" . $type . "'" : '';
-        return new TypePropertyException('The type' . $type . ' for ' . get_class($this) . ' ' . $reason);
+        return new TypePropertyException('The type ' . $type . ' for ' . get_class($this) . ' ' . $reason);
     }
 
     /**
