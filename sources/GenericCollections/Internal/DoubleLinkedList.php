@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Internal;
+<?php
+namespace GenericCollections\Internal;
 
 /**
  * This is a double linked list that contains elements by position

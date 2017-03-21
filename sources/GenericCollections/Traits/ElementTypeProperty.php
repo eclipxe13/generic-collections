@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Traits;
+<?php
+namespace GenericCollections\Traits;
 
 /**
  * Trait ElementTypeProperty.

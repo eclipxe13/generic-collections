@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
 use GenericCollections\Map;

@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Abstracts;
+<?php
+namespace GenericCollections\Abstracts;
 
 use GenericCollections\Interfaces\StackInterface;
 use GenericCollections\Internal\DataDoubleLinkedList;

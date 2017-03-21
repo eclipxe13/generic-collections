@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Deque;
 use GenericCollections\Options;
@@ -28,7 +29,7 @@ class DequeEqualTest extends \PHPUnit_Framework_TestCase
         $this->equalToFoo = clone $this->foo;
         $this->deque = new Deque(Foo::class, [
             $this->foo,
-            $this->bar
+            $this->bar,
         ], Options::COMPARISON_EQUAL);
     }
 

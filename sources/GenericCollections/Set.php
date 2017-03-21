@@ -1,4 +1,5 @@
-<?php namespace GenericCollections;
+<?php
+namespace GenericCollections;
 
 /**
  * Generic set implementation

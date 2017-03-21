@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
 use GenericCollections\Exceptions\InvalidDefaultValueTypeException;
@@ -33,7 +34,6 @@ class MapDefaultTest extends \PHPUnit_Framework_TestCase
         $this->four = new Foo(4);
         $this->five = new Foo(5);
     }
-
 
     public function createMapStringFoo()
     {

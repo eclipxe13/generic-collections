@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Interfaces;
+<?php
+namespace GenericCollections\Interfaces;
 
 use GenericCollections\Internal\StorageInterface;
 

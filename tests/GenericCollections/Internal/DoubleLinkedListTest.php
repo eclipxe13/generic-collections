@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Internal;
+<?php
+namespace GenericCollections\Internal;
 
 use GenericCollections\Tests\Samples\Foo;
 

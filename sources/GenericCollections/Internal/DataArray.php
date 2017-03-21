@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Internal;
+<?php
+namespace GenericCollections\Internal;
 
 /**
  * This is a internal class to implement a protected property $data

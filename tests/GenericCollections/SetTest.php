@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
 use GenericCollections\Interfaces\CollectionInterface;
@@ -13,7 +14,6 @@ use GenericCollections\Set;
  */
 class SetTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testConstructor()
     {
         $set = new Set('int');

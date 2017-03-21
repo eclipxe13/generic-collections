@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Internal;
+<?php
+namespace GenericCollections\Internal;
 
 abstract class DataDoubleLinkedList implements StorageInterface
 {

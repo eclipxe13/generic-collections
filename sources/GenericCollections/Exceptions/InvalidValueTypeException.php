@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Exceptions;
+<?php
+namespace GenericCollections\Exceptions;
 
 class InvalidValueTypeException extends AbstractInvalidTypeException
 {

@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Exceptions\InvalidValueTypeException;
 use GenericCollections\Map;
@@ -17,7 +18,6 @@ use GenericCollections\Tests\Samples\Foo;
  */
 class MapArrayAccessTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $zero;
     protected $four;
     protected $five;

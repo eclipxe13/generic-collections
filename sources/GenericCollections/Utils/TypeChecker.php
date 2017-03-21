@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Utils;
+<?php
+namespace GenericCollections\Utils;
 
 class TypeChecker
 {

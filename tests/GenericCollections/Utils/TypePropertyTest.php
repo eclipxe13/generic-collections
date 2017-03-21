@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests\Utils;
+<?php
+namespace GenericCollections\Tests\Utils;
 
 use GenericCollections\Exceptions\TypePropertyException;
 use GenericCollections\Utils\TypeProperty;

@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Abstracts;
+<?php
+namespace GenericCollections\Abstracts;
 
 use GenericCollections\Exceptions\ContainerIsEmptyException;
 use GenericCollections\Interfaces\DequeInterface;

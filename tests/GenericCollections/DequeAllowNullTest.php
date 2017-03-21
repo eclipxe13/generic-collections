@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Deque;
 use GenericCollections\Options;
@@ -26,7 +27,7 @@ class DequeAllowNullTest extends \PHPUnit_Framework_TestCase
         $this->bar = new Foo('bar');
         $this->deque = new Deque(Foo::class, [
             $this->foo,
-            $this->bar
+            $this->bar,
         ], Options::ALLOW_NULLS);
     }
 

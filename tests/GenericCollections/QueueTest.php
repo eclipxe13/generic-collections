@@ -1,4 +1,5 @@
-<?php namespace GenericCollections;
+<?php
+namespace GenericCollections;
 
 use GenericCollections\Exceptions\GenericCollectionsException;
 use GenericCollections\Interfaces\QueueInterface;

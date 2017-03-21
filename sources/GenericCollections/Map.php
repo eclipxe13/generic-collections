@@ -1,4 +1,5 @@
-<?php namespace GenericCollections;
+<?php
+namespace GenericCollections;
 
 use GenericCollections\Abstracts\AbstractMap;
 use GenericCollections\Traits\ElementTypeProperty;

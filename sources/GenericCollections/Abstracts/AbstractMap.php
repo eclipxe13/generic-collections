@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Abstracts;
+<?php
+namespace GenericCollections\Abstracts;
 
 use GenericCollections\Collection;
 use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
@@ -88,9 +89,7 @@ abstract class AbstractMap extends DataArray implements MapInterface, \ArrayAcce
     {
         $changed = false;
         $previous = $this->get($key);
-        $isequal = ($this->optionComparisonIsIdentical())
-            ? ($previous === $value)
-            : ($previous == $value);
+        $isequal = ($this->optionComparisonIsIdentical()) ? ($previous === $value) : ($previous == $value);
         if ($isequal) {
             unset($this->data[$key]);
             $changed = true;
@@ -109,9 +108,7 @@ abstract class AbstractMap extends DataArray implements MapInterface, \ArrayAcce
             return false;
         }
         $previous = $this->get($key);
-        $isequal = ($this->optionComparisonIsIdentical())
-            ? ($previous === $current)
-            : ($previous == $current);
+        $isequal = ($this->optionComparisonIsIdentical()) ? ($previous === $current) : ($previous == $current);
         if ($isequal) {
             $this->put($key, $replacement);
             return true;

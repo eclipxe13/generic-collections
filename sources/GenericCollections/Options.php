@@ -1,4 +1,5 @@
-<?php namespace GenericCollections;
+<?php
+namespace GenericCollections;
 
 use GenericCollections\Exceptions\OptionsException;
 use GenericCollections\Interfaces\BaseOptionsInterface;
@@ -31,13 +32,13 @@ class Options implements BaseOptionsInterface
      */
     public function __construct($options)
     {
-        if (! is_integer($options)) {
+        if (! is_int($options)) {
             throw new OptionsException('The supplied options value is not an integer');
         }
-        $options                     = $options & 7; // truncate to max value (3 ^ 2 - 1)
-        $this->options               = $options;
-        $this->allowNullMembers      = (bool) ($options & self::ALLOW_NULLS);
-        $this->uniqueValues          = (bool) ($options & self::UNIQUE_VALUES);
+        $options = $options & 7; // truncate to max value (3 ^ 2 - 1)
+        $this->options = $options;
+        $this->allowNullMembers = (bool) ($options & self::ALLOW_NULLS);
+        $this->uniqueValues = (bool) ($options & self::UNIQUE_VALUES);
         $this->comparisonIsIdentical = ! (bool) ($options & self::COMPARISON_EQUAL);
     }
 

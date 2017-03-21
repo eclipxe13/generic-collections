@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Interfaces;
+<?php
+namespace GenericCollections\Interfaces;
 
 interface StackInterface extends BaseCollectionInterface
 {

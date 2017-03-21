@@ -1,4 +1,5 @@
-<?php namespace GenericCollections;
+<?php
+namespace GenericCollections;
 
 use GenericCollections\Abstracts\AbstractQueue;
 use GenericCollections\Traits\ElementTypeProperty;

@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Deque;
 use GenericCollections\Exceptions\ContainerDoesNotAllowNullException;
@@ -84,7 +85,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
     public function providerAddOfferMethods()
     {
         return [
-            ['add'], ['addFirst'], ['addLast'], ['offer'], ['offerFirst'], ['offerLast']
+            ['add'], ['addFirst'], ['addLast'], ['offer'], ['offerFirst'], ['offerLast'],
         ];
     }
 
