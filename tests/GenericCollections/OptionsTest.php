@@ -1,7 +1,8 @@
 <?php
-namespace GenericCollections;
+namespace GenericCollections\Tests;
 
 use GenericCollections\Exceptions\OptionsException;
+use GenericCollections\Options;
 
 class OptionsTest extends \PHPUnit_Framework_TestCase
 {

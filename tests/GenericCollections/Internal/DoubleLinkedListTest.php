@@ -1,6 +1,7 @@
 <?php
-namespace GenericCollections\Internal;
+namespace GenericCollections\Tests\Internal;
 
+use GenericCollections\Internal\DoubleLinkedList;
 use GenericCollections\Tests\Samples\Foo;
 
 class DoubleLinkedListTest extends \PHPUnit_Framework_TestCase

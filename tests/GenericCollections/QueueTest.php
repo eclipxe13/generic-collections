@@ -1,8 +1,9 @@
 <?php
-namespace GenericCollections;
+namespace GenericCollections\Tests;
 
 use GenericCollections\Exceptions\GenericCollectionsException;
 use GenericCollections\Interfaces\QueueInterface;
+use GenericCollections\Queue;
 use GenericCollections\Tests\Samples\Foo;
 
 /**
