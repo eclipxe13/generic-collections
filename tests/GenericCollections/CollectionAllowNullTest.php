@@ -4,6 +4,7 @@ namespace GenericCollections\Tests;
 use GenericCollections\Collection;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Collection methods that behaves
@@ -12,7 +13,7 @@ use GenericCollections\Tests\Samples\Foo;
  * As this is set by the property itself then it only assert that
  * the option is set and the checktype returns true
  */
-class CollectionAllowNullTest extends \PHPUnit_Framework_TestCase
+class CollectionAllowNullTest extends TestCase
 {
     /** @var Collection */
     private $collection;

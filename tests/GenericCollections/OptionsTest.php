@@ -3,8 +3,9 @@ namespace GenericCollections\Tests;
 
 use GenericCollections\Exceptions\OptionsException;
 use GenericCollections\Options;
+use PHPUnit\Framework\TestCase;
 
-class OptionsTest extends \PHPUnit_Framework_TestCase
+class OptionsTest extends TestCase
 {
     public function testConstructor()
     {

@@ -3,8 +3,9 @@ namespace GenericCollections\Tests\Internal;
 
 use GenericCollections\Internal\DoubleLinkedList;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
-class DoubleLinkedListTest extends \PHPUnit_Framework_TestCase
+class DoubleLinkedListTest extends TestCase
 {
     /** @var  DoubleLinkedList */
     private $doubleLinkedList;

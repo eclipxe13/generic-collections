@@ -4,6 +4,7 @@ namespace GenericCollections\Tests;
 use GenericCollections\Collection;
 use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test a Collection with default behavior:
@@ -13,7 +14,7 @@ use GenericCollections\Tests\Samples\Foo;
  *
  * Other tests must be created for other options
  */
-class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
+class CollectionDefaultTest extends TestCase
 {
     public function testConstructWithType()
     {

@@ -11,6 +11,7 @@ use GenericCollections\Internal\StorageInterface;
 use GenericCollections\Map;
 use GenericCollections\Set;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test a Map with default behavior:
@@ -20,7 +21,7 @@ use GenericCollections\Tests\Samples\Foo;
  *
  * Other tests must be created for other options
  */
-class MapDefaultTest extends \PHPUnit_Framework_TestCase
+class MapDefaultTest extends TestCase
 {
     protected $zero;
     protected $four;

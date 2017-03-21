@@ -4,6 +4,7 @@ namespace GenericCollections\Tests;
 use GenericCollections\Collection;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Collection methods that behaves
@@ -11,7 +12,7 @@ use GenericCollections\Tests\Samples\Foo;
  *
  * - method add
  */
-class CollectionUniqueValuesTest extends \PHPUnit_Framework_TestCase
+class CollectionUniqueValuesTest extends TestCase
 {
     /** @var Collection */
     private $collection;

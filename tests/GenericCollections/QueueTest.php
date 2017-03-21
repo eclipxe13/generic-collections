@@ -5,6 +5,7 @@ use GenericCollections\Exceptions\GenericCollectionsException;
 use GenericCollections\Interfaces\QueueInterface;
 use GenericCollections\Queue;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test a Queue
@@ -13,7 +14,7 @@ use GenericCollections\Tests\Samples\Foo;
  * to add, push, element, peek, remove and poll then only LIFO behavior
  * will be tested
  */
-class QueueTest extends \PHPUnit_Framework_TestCase
+class QueueTest extends TestCase
 {
     /** @var QueueInterface */
     private $queue;

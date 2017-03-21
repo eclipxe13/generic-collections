@@ -4,6 +4,7 @@ namespace GenericCollections\Tests;
 use GenericCollections\Collection;
 use GenericCollections\Interfaces\CollectionInterface;
 use GenericCollections\Set;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Set is a Collection's extended class.
@@ -12,7 +13,7 @@ use GenericCollections\Set;
  * This test does not check other than the constructor, the
  * option for Unique Values is tested in CollectionUniqueValuesTest
  */
-class SetTest extends \PHPUnit_Framework_TestCase
+class SetTest extends TestCase
 {
     public function testConstructor()
     {

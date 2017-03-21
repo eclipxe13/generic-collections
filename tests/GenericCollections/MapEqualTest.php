@@ -4,6 +4,7 @@ namespace GenericCollections\Tests;
 use GenericCollections\Map;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Map methods that behaves
@@ -13,7 +14,7 @@ use GenericCollections\Tests\Samples\Foo;
  * - removeExact: comparisonMethodIsIdentical
  * - replaceExact: comparisonMethodIsIdentical
  */
-class MapEqualTest extends \PHPUnit_Framework_TestCase
+class MapEqualTest extends TestCase
 {
     protected function newFooMapWithEqualComparisons()
     {

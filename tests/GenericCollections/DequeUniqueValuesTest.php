@@ -5,6 +5,7 @@ use GenericCollections\Deque;
 use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Deque methods that behaves
@@ -13,7 +14,7 @@ use GenericCollections\Tests\Samples\Foo;
  * - method add, addFirst and addLast
  * - method offer, offerFirst and offerLast
  */
-class DequeUniqueValuesTest extends \PHPUnit_Framework_TestCase
+class DequeUniqueValuesTest extends TestCase
 {
     /** @var Deque */
     private $deque;

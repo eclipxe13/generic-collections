@@ -4,6 +4,7 @@ namespace GenericCollections\Tests;
 use GenericCollections\Deque;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Deque methods that behaves
@@ -12,7 +13,7 @@ use GenericCollections\Tests\Samples\Foo;
  * This is determined by the constructor of the internal
  * storage, so we will test using the method contains
  */
-class DequeEqualTest extends \PHPUnit_Framework_TestCase
+class DequeEqualTest extends TestCase
 {
     /** @var Deque */
     private $deque;
