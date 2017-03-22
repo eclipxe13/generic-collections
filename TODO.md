@@ -24,24 +24,9 @@ It would be better to just return false on offer and never throw a exception?
 - [X] TypeChecker could be part of of TypeProperty, in that way every property would
       know what to do and if it allows nulls. It would be possible to check against more than one type.
 - [X] Implement option allowNulls for collections and maps, omits type checking for NULL elements/values.
-
-
-### TypedPropertiesMap
-
-This is an special map where every member has its own type.
-It could be very useful for arrays as entities:
-
-```php
-// User class extends TypedProperties, so:
-$user = new User();
-$user['id'] = 12345; // (id => integer)
-$user['name'] = 'some text'; // (name => string)
-$user['birthdate'] = 'in the past'; // throw an exception, 'birthdate' expect a \DateTimeInterface
-```
-
-See <https://github.com/ramsey/collection/blob/master/src/Map/NamedParameterMap.php>
-
-Also see Hack Shape <https://docs.hhvm.com/hack/overview/collections#what-are-shapes>
+- [X] Implement typed struct as Named Parameters or HHVM Shape
+    <https://github.com/ramsey/collection/blob/master/src/Map/NamedParameterMap.php>
+    <https://docs.hhvm.com/hack/overview/collections#what-are-shapes>
 
 ### Specialized maps: IntegerKeysMap, StringKeysMap, HashMap
 

@@ -61,7 +61,7 @@ Classes that implement `\ArrayAccess`
 Additional classes:
 
 - [x] Stack: Collection for holding elements (LIFO)
-- [ ] Shape: Structure with typed values
+- [x] ~~Shape~~TypedStruct: Structure with typed values (also with `\ArrayAccess`)
 
 All classes have these additional options:
 
