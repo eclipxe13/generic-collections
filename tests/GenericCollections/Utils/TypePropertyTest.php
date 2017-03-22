@@ -1,9 +1,11 @@
-<?php namespace GenericCollections\Tests\Utils;
+<?php
+namespace GenericCollections\Tests\Utils;
 
 use GenericCollections\Exceptions\TypePropertyException;
 use GenericCollections\Utils\TypeProperty;
+use PHPUnit\Framework\TestCase;
 
-class TypePropertyTest extends \PHPUnit_Framework_TestCase
+class TypePropertyTest extends TestCase
 {
     public function testGetValueType()
     {

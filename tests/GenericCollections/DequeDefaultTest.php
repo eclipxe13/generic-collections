@@ -1,4 +1,5 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Deque;
 use GenericCollections\Exceptions\ContainerDoesNotAllowNullException;
@@ -6,6 +7,7 @@ use GenericCollections\Exceptions\ContainerIsEmptyException;
 use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Interfaces\DequeInterface;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test a Deque with default behavior:
@@ -15,7 +17,7 @@ use GenericCollections\Tests\Samples\Foo;
  *
  * Other tests must be created for other options
  */
-class DequeDefaultTest extends \PHPUnit_Framework_TestCase
+class DequeDefaultTest extends TestCase
 {
     /**
      * Use an empty deque<foo> for testing
@@ -84,7 +86,7 @@ class DequeDefaultTest extends \PHPUnit_Framework_TestCase
     public function providerAddOfferMethods()
     {
         return [
-            ['add'], ['addFirst'], ['addLast'], ['offer'], ['offerFirst'], ['offerLast']
+            ['add'], ['addFirst'], ['addLast'], ['offer'], ['offerFirst'], ['offerLast'],
         ];
     }
 

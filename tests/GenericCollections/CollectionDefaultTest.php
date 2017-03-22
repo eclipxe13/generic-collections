@@ -1,8 +1,10 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
 use GenericCollections\Exceptions\InvalidElementTypeException;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test a Collection with default behavior:
@@ -12,11 +14,11 @@ use GenericCollections\Tests\Samples\Foo;
  *
  * Other tests must be created for other options
  */
-class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
+class CollectionDefaultTest extends TestCase
 {
     public function testConstructWithType()
     {
-        $col = new Collection("int");
+        $col = new Collection('int');
 
         $this->assertEquals('int', $col->getElementType());
         $this->assertInternalType('array', $col->toArray());
@@ -28,21 +30,21 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testAdd()
     {
-        $col = new Collection("int");
+        $col = new Collection('int');
         $this->assertTrue($col->add(9));
         $this->assertEquals([9], $col->toArray());
     }
 
     public function testAddWithWrongType()
     {
-        $col = new Collection("int");
+        $col = new Collection('int');
         $this->expectException(InvalidElementTypeException::class);
         $this->assertTrue($col->add('foo'));
     }
 
     public function testCount()
     {
-        $col = new Collection("int");
+        $col = new Collection('int');
         $col->add(9);
         $col->add(9);
         $col->add(9);
@@ -53,7 +55,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
     public function testAddAll()
     {
         $phpArray = [1, 2, 3];
-        $col = new Collection("int");
+        $col = new Collection('int');
         $this->assertTrue($col->addAll($phpArray));
         $this->assertEquals($phpArray, $col->toArray());
     }
@@ -61,13 +63,13 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
     public function testConstructWithData()
     {
         $phpArray = [1, 2, 3];
-        $col = new Collection("int", $phpArray);
+        $col = new Collection('int', $phpArray);
         $this->assertEquals($phpArray, $col->toArray());
     }
 
     public function testClear()
     {
-        $col = new Collection("int", [1, 2, 3]);
+        $col = new Collection('int', [1, 2, 3]);
         $this->assertCount(3, $col);
 
         $col->clear();
@@ -85,7 +87,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
         $expected = [
             $first,
             $one,
-            $two
+            $two,
         ];
         $col = new Collection(Foo::class, $expected);
 
@@ -103,7 +105,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testIsEmpty()
     {
-        $col = new Collection("int");
+        $col = new Collection('int');
         $this->assertTrue($col->isEmpty());
         $this->assertEmpty($col);
 
@@ -114,7 +116,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testContainsScalarValues()
     {
-        $col = new Collection("int", [-3, 3]);
+        $col = new Collection('int', [-3, 3]);
         $this->assertFalse($col->contains(9));
 
         $col->add(9);
@@ -140,7 +142,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
     public function testContainsAll()
     {
         $phpArray = [-3, 0, 3];
-        $col = new Collection("int", [-3, 0, 3]);
+        $col = new Collection('int', [-3, 0, 3]);
 
         // empty
         $this->assertTrue($col->containsAll([]));
@@ -156,7 +158,7 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
 
     public function testContainsAny()
     {
-        $col = new Collection("int", [-3, 0, 3]);
+        $col = new Collection('int', [-3, 0, 3]);
         // empty
         $this->assertFalse($col->containsAny([]));
         // completely different elements
@@ -207,14 +209,13 @@ class CollectionDefaultTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expectedArray, $collection->toArray());
     }
 
-
     public function testRemoveAllSingleElement()
     {
         $onehundred = new Samples\Foo(100);
         $onezerozero = new Samples\Foo(100);
         $col = new Collection(Samples\Foo::class, [
             $onezerozero,
-            $onehundred, $onehundred, $onehundred, $onehundred, $onehundred
+            $onehundred, $onehundred, $onehundred, $onehundred, $onehundred,
         ]);
 
         $this->assertTrue($col->removeAll([$onehundred]));

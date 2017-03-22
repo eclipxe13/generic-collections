@@ -1,8 +1,10 @@
-<?php namespace GenericCollections\Tests\Utils;
+<?php
+namespace GenericCollections\Tests\Utils;
 
 use GenericCollections\Utils\TypeChecker;
+use PHPUnit\Framework\TestCase;
 
-class TypeCheckerTest extends \PHPUnit_Framework_TestCase
+class TypeCheckerTest extends TestCase
 {
     /** @var TypeChecker */
     protected $checker;

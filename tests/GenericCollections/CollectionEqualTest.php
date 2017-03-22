@@ -1,8 +1,10 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Collection;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Collection methods that behaves
@@ -12,7 +14,7 @@ use GenericCollections\Tests\Samples\Foo;
  * - remove
  * - retainAll
  */
-class CollectionEqualTest extends \PHPUnit_Framework_TestCase
+class CollectionEqualTest extends TestCase
 {
     /** @var Collection */
     private $collection;

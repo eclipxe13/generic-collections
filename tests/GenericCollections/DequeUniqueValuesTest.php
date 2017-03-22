@@ -1,10 +1,11 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Deque;
-use GenericCollections\Exceptions\ContainerDoesNotAllowNullException;
 use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Deque methods that behaves
@@ -13,7 +14,7 @@ use GenericCollections\Tests\Samples\Foo;
  * - method add, addFirst and addLast
  * - method offer, offerFirst and offerLast
  */
-class DequeUniqueValuesTest extends \PHPUnit_Framework_TestCase
+class DequeUniqueValuesTest extends TestCase
 {
     /** @var Deque */
     private $deque;
@@ -30,7 +31,7 @@ class DequeUniqueValuesTest extends \PHPUnit_Framework_TestCase
         $this->sameAsFoo = $this->foo;
         $this->deque = new Deque(Foo::class, [
             $this->foo,
-            $this->bar
+            $this->bar,
         ], Options::UNIQUE_VALUES);
     }
 

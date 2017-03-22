@@ -1,8 +1,11 @@
-<?php namespace GenericCollections;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Exceptions\GenericCollectionsException;
 use GenericCollections\Interfaces\StackInterface;
+use GenericCollections\Stack;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test a Stack
@@ -11,7 +14,7 @@ use GenericCollections\Tests\Samples\Foo;
  * to add, push, element, peek, remove and poll then only LIFO behavior
  * will be tested
  */
-class StackTest extends \PHPUnit_Framework_TestCase
+class StackTest extends TestCase
 {
     /** @var StackInterface */
     private $stack;

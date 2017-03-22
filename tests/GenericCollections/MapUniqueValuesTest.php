@@ -1,9 +1,11 @@
-<?php namespace GenericCollections\Tests;
+<?php
+namespace GenericCollections\Tests;
 
 use GenericCollections\Exceptions\ContainerNotUniqueMemberException;
 use GenericCollections\Map;
 use GenericCollections\Options;
 use GenericCollections\Tests\Samples\Foo;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This only check the Map methods that behaves
@@ -11,7 +13,7 @@ use GenericCollections\Tests\Samples\Foo;
  *
  * - add
  */
-class MapUniqueValuesTest extends \PHPUnit_Framework_TestCase
+class MapUniqueValuesTest extends TestCase
 {
     /** @var Map */
     private $map;
